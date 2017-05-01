@@ -3,7 +3,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 import AppBar from 'material-ui/AppBar';
 
 let style = {
-  fontFamily:'Roboto, sans-serif'
+  fontFamily:'Lato, Roboto, sans-serif'
 }
 
 const Header = (props) => (

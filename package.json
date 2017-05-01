@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack && webpack-dev-server --env.dev --content-base dist --hot",
+    "dev": "npm run clean-dist && webpack && webpack-dev-server --env.dev --content-base dist --hot",
+    "clean-dist": "rimraf dist",
     "validate-webpack:dev": "webpack-validator webpack.config.js"
   },
   "author": "",
