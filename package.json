@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack-dev-server --env.dev --content-base dist --hot",
+    "start": "webpack && webpack-dev-server --env.dev --content-base dist --hot",
     "validate-webpack:dev": "webpack-validator webpack.config.js"
   },
   "author": "",
