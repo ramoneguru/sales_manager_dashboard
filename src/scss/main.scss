@@ -1,0 +1,13 @@
+/*
+ * Copyright (c) 2016 - 2017 Drew Robinson <hello@drewrobinson.com>
+ *
+ * CSS stylesheets for layout and static - inline for the state-styles
+ */
+
+@import './app-bar';
+
+body{
+  margin:0;
+  background-color:white;
+}
+
