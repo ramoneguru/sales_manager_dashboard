@@ -1,0 +1,42 @@
+@import './animation';
+
+.chart-container{
+  background: #fff;
+  height:calc(100vw/2.4);
+
+  & > div{
+    padding:0 0.5em  1.5em  0.65em;
+    @extend .animated-background;
+
+    &.end{
+      @extend .end;
+    }
+  }
+
+
+}
+
+.background-masker {
+  background: #fff;
+  position: absolute;
+}
+
+.background-masker{
+  width: auto;
+  left: 0;
+  right: 0;
+  top: 60px;
+  height: 8px;
+}
+
+.chart-container > div > div:nth-child(1){
+  top: 8px;
+}
+
+.chart-container > div > div:nth-child(2){
+  top: 32px;
+}
+
+.chart-container > div > div:nth-child(3){
+  top: 48px;
+}

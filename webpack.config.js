@@ -1,14 +1,17 @@
+/**
+ * @TODO: turn on caching, minification for HtmlWebpackPlugin
+ */
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const {resolve} = require('path');
-const env = process.env.NODE_ENV || 'dev';
-const isProduction = env === 'production';
+const isDev = process.argv.indexOf('--d') !== -1;
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
-
   context: resolve(__dirname, 'src'),
-  entry: ['./js/main.js', './scss/main.scss'],
+  entry: ['babel-polyfill', './js/main.js', './scss/main.scss'],
   output: {
     path:resolve(__dirname, 'dist'),
     filename: 'bundle.[hash].js'
@@ -17,13 +20,21 @@ module.exports = {
     inline: true,
     contentBase: './dist'
   },
-  devtool: env.dev ? 'eval' : 'source-map',
+  devtool: isDev? 'eval' : 'source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'eslint-loader']
+        use: [
+          'babel-loader',
+          {
+            loader:'eslint-loader',
+            options: {
+              "parser": "babel-eslint"
+            }
+          }
+        ]
       },
       {
         test: /\.jsx?$/,
@@ -35,16 +46,16 @@ module.exports = {
           }
         ]
       },
-      { // regular css files
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           loader: 'css-loader?importLoaders=1'
         })
       },
-      { // sass / scss loader for webpack
+      {
         test: /\.(sass|scss)$/,
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-      }
+      },
     ]
   },
   plugins: [
@@ -52,14 +63,29 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'GPC Sales Activity Dashboard App',
       template: './index.html',
-      filename: './index.html'
+      filename: './index.html',
+      inject:true,
+      cache: false,
+      minify:{
+        removeComments:false,
+        collapseWhitespace:false,
+      }
     }),
-    new ExtractTextPlugin({ // define where to save the css file
+    new ExtractTextPlugin({
       filename:   'bundle.[hash].css',
       allChunks: true
+    }),
+    new ManifestPlugin({
+      "writeToFileEmit":false,
+      "short_name":"GPC Sales Activity App",
+      "name": "HackerWeb",
+      "short_name": "HackerWeb",
+      "start_url": ".",
+      "display": "standalone",
+      "background_color": "#fff",
+      "description": "A simply readable Hacker News app."
     })
   ]
-
 }
 
-////node-sass src/styles/main.scss dist/style.css --output-style compressed &&
+//mocha --compilers js:babel-core/register --require babel-polyfill

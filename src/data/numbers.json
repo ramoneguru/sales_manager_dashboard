@@ -1,0 +1,11 @@
+{
+  "numbers_activity": [
+    ["", "Calls", "Emails", "Deal", "Stage 1",  { "role": "annotation" },  { "role": "annotation" }  ],
+    ["Dunkin Donuts", 530, 590, 620, 632, 1200, ""],
+    ["Liberty Mutual", 316, 422, 443, 490, 770,  ""],
+    ["Work Day", 628, 690, 729, 830, 1000,  ""],
+    ["Netflix", 128, 519, 629, 730, 1400, ""],
+    ["Atlassian", 328, 519, 729, 830, 950, ""],
+    ["Kellogs", 128, 319, 429, 480, 550, ""]
+  ]
+}

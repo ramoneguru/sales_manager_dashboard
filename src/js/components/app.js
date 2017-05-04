@@ -1,13 +1,18 @@
 import React from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import gcpDashboardTheme from '../styles/app-theme'
+import Numbers from './numbers/app-numbers';
+import Efficiency from './efficiency/app-efficiency';
 import Template from './app-template';
-injectTapEventPlugin();
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
 export default () => {
   return (
-    <MuiThemeProvider muiTheme={gcpDashboardTheme}>
-      <Template ></Template>
-    </MuiThemeProvider>
+    <Router>
+      <Template>
+        <Switch>
+          <Route exact path="/" component={ Numbers }/>
+          <Route exact path="/efficiency" component={ Efficiency }/>
+        </Switch>
+      </Template>
+    </Router>
   )
 }

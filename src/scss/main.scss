@@ -3,11 +3,14 @@
  *
  * CSS stylesheets for layout and static - inline for the state-styles
  */
-
+@import './type.scss';
+@import './app-numbers.scss';
 @import './app-bar';
 
 body{
   margin:0;
-  background-color:white;
 }
-
+.container{
+  height:100vh;
+  background-color:#fff;
+}

@@ -1,40 +1,46 @@
 {
   "name": "@drewrobinson/gcp_sales_dashboard",
   "version": "1.0.0",
-  "description": "",
+  "description": "React PWA Setup",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "npm run clean-dist && webpack && webpack-dev-server --env.dev --content-base dist --hot",
+    "start-dev": "npm run clean-dist && mkdir dist && npm run copy-files && webpack-dev-server --d",
+    "build": "webpack && sw-precache --root=dist --config=sw-precache-config.js",
     "clean-dist": "rimraf dist",
-    "validate-webpack:dev": "webpack-validator webpack.config.js"
+    "copy-files": "cp -a src/data dist/data"
   },
-  "author": "",
+  "author": "Andrew Robinson <hello@drewrobinson.com>",
   "license": "ISC",
   "dependencies": {
     "css-loader": "^0.28.0",
-    "node-sass": "^4.5.2",
-    "sass-loader": "^6.0.3",
-    "webpack": "^2.4.1",
     "flux": "^3.1.2",
-    "material": "^0.1.1",
-    "material-ui": "^0.18.0",
+    "node-sass": "^4.5.2",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "sass-loader": "^6.0.3",
+    "webpack": "^2.4.1",
+    "webpack-manifest-plugin": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint-plugin-react": "^6.10.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.28.0",
     "react-hot-loader": "^1.3.1",
+    "react-scripts": "^0.9.5",
+    "sw-precache": "^5.1.0",
     "webpack-dev-server": "^2.4.5"
   }
 }

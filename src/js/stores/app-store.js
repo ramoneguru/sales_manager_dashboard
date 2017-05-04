@@ -1,11 +1,14 @@
+"use strict";
+
 import {dispatch, register} from '../dispatchers/app-dispatcher';
 import AppConstants from '../constants/app-constants';
 import { EventEmitter } from 'events';
-import CartAPI from '../api/cart-api';
+import ActivityAPI from '../api/activity-api';
 
 const CHANGE_EVENT = 'change'
 
 const AppStore = Object.assign(EventEmitter.prototype, {
+
   emitChange(){
     this.emit( CHANGE_EVENT )
   },
@@ -18,33 +21,26 @@ const AppStore = Object.assign(EventEmitter.prototype, {
     this.removeListener( CHANGE_EVENT, callback )
   },
 
-  getCart(){
-    return CartAPI.cartItems;
-  },
-
-  getCatalog(){
-    return CartAPI.getCatalog();
-  },
-
-  getCartTotals(){
-    return CartAPI.cartTotals();
+  async getActivityNumbers(){
+    return await ActivityAPI.getActivityNumbers();
   },
 
   dispatcherIndex: register( function( action ){
+
     switch(action.actionType){
       case AppConstants.ADD_ITEM:
-        CartAPI.addItem( action.item );
+        //CartAPI.addItem( action.item );
         break;
       case AppConstants.REMOVE_ITEM:
-        CartAPI.removeItem( action.item );
+        //CartAPI.removeItem( action.item );
         break;
 
       case AppConstants.INCREASE_ITEM:
-        CartAPI.increaseItem( action.item );
+        //CartAPI.increaseItem( action.item );
         break;
 
       case AppConstants.DECREASE_ITEM:
-        CartAPI.decreaseItem( action.item );
+        //CartAPI.decreaseItem( action.item );
         break;
     }
 
