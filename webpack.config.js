@@ -20,7 +20,7 @@ module.exports = {
     inline: true,
     contentBase: './dist'
   },
-  devtool: isDev? 'eval' : 'source-map',
+  devtool: isDev?  'source-map': 'eval',
   module: {
     rules: [
       {
@@ -61,7 +61,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
-      title: 'GPC Sales Activity Dashboard App',
+      title: 'Sales Activity Dashboard App',
       template: './index.html',
       filename: './index.html',
       inject:true,

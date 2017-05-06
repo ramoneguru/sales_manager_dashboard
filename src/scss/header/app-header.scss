@@ -1,0 +1,19 @@
+.header {
+  background-color:#f1f1f1;
+  min-height:5em;
+
+  .overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(241, 241, 241, 0.9);
+    z-index: 100;
+
+    &.show {
+      display: block;
+    }
+  }
+}

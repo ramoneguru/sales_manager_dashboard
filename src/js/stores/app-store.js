@@ -1,6 +1,6 @@
 "use strict";
 
-import {dispatch, register} from '../dispatchers/app-dispatcher';
+import { register } from '../dispatchers/app-dispatcher';
 import AppConstants from '../constants/app-constants';
 import { EventEmitter } from 'events';
 import ActivityAPI from '../api/activity-api';

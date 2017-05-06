@@ -1,19 +1,19 @@
 @import './animation';
+@import '../../node_modules/chartist-webpack/dist/scss/chartist.scss';
 
 .chart-container{
-  background: #fff;
+  width:100vw;
   height:calc(100vw/2.4);
+  background: #fff;
 
   & > div{
-    padding:0 0.5em  1.5em  0.65em;
+    display:none;
     @extend .animated-background;
 
     &.end{
       @extend .end;
     }
   }
-
-
 }
 
 .background-masker {

@@ -1,16 +1,21 @@
 /*
  * Copyright (c) 2016 - 2017 Drew Robinson <hello@drewrobinson.com>
  *
- * CSS stylesheets for layout and static - inline for the state-styles
+ * CSS stylesheets for layout
+ * Inline for the state-styles
+ *
  */
 @import './type.scss';
 @import './app-numbers.scss';
-@import './app-bar';
+@import './header/app-header';
+@import './header/app-header-button';
 
 body{
   margin:0;
 }
+
 .container{
   height:100vh;
   background-color:#fff;
 }
+
