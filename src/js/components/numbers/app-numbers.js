@@ -8,7 +8,7 @@ import BarChart from '../charts/app-bar-chart';
 
 function componentWillMount() {
   return {
-    data: AppStore.getActivityNumbers()
+    data: 'app-numbers-data-placeholder'//AppStore.getActivityNumbers()
   }
 }
 

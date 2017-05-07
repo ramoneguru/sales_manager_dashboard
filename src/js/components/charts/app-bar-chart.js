@@ -8,11 +8,11 @@ class BarChart extends React.Component {
   }
 
   componentWillMount( props ){
-    console.log('BarChart componentWillMount ', props);
+    //console.log('BarChart componentWillMount ', props);
   }
 
   componentDidMount( props ){
-    console.log('BarChart componentDidMount ', props);
+    //console.log('BarChart componentDidMount ', props);
 
     new Chartist.Bar('.chart-container', {
       labels: ['Dunkin Donuts', 'Liberty Mutual', 'Work Day', 'Netflix','Atlassian','Kellogs'],
@@ -39,11 +39,11 @@ class BarChart extends React.Component {
   }
 
   componentWillUnmount(){
-    console.log('Header Component Will UnMount');
+    //console.log('Header Component Will UnMount');
   }
 
   render( props ){
-    console.log('BarChart render: ', props);
+    //console.log('BarChart render: ', props);
     return (
       <div className="chart-container">
         <div className="loading-indicator">
@@ -62,8 +62,8 @@ class BarChart extends React.Component {
 //     return 'What do we have here'
 //   }
 // };
-BarChart.defaultProps = {
-  first: 'Andrew'
-};
+// BarChart.defaultProps = {
+//   first: 'Andrew'
+// };
 
 export default BarChart;

@@ -1,33 +1,49 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux';//abstracts store.getState(), dispatch, subscribe -- not currently using this but keeping it here for reference and examples
 
 import Button from  './app-header-button';
 import AppActions from '../../actions/app-actions';
 import AppConstants from '../../constants/app-constants';
 import PropTypes from 'prop-types';
 
-const mapStateToProps = function(state){
-  console.log('mapStateToProps',state);
-  return {
-    first: 'andrew',
-  }
-}
+/*
+// Example of using connect to map global state to props
+ const mapStateToProps = function(state){
+   console.log('app-header :: mapStateToProps',state);
+   return {
+   menu: state.menu,
+   }
+ }
 
-const mapDispatchToProps = function (dispatch) {
-  console.log('mapDispathcToProps',dispatch);
-  return bindActionCreators({
-    last: 'robinson',
-  }, dispatch)
-}
+ // Example of using connect to dispatch actions
+ bindActionCreators(AppActions.openMenu(), dispatch)
+   const mapDispatchToProps = function (dispatch) {
+   console.log('app-header :: dispatch: ');
+   return {
+     menuClickHandler:() => {
+      dispatch(AppActions.openMenu())
+     }
+   }
+ }
+ */
+
 
 class Header extends React.Component {
 
   constructor(props) {
-    console.log('app-header constructor props: ',props);
     super(props);
-    this.clickHandler = this.clickHandler.bind(this);
+    this.menuClickHandler = this.menuClickHandler.bind(this);
     this.overlay = null;
+    this.state = {
+      menu: -1
+    }
+  }
+
+  //global state change handler
+  handleChange(){
+    const { store } = this.context;
+    console.log('store.getState(): ', store.getState());
   }
 
   componentWillMount(){
@@ -35,58 +51,80 @@ class Header extends React.Component {
   }
 
   componentDidMount(){
-    console.log('************ app-header did mount *************');
-    //console.log('Header Component Did Mount');
+    console.log('************ app-header did mount ************* ', this);
+    const props = this.props;
+    const { store } = this.context;
+    const state = store.getState();
+
     this.overlay = document.querySelector('.overlay');
 
-    // function handleChange() {
-    //   let previousValue = currentValue
-    //   currentValue = select(store.getState())
-    //
-    //   if (previousValue !== currentValue) {
-    //     console.log('Some deep nested property changed from', previousValue, 'to', currentValue)
-    //   }
-    // }
-    //
-    // let unsubscribe = store.subscribe(handleChange)
-    //
-    // console.log('store.getState().menu',store.getState().menu);
-    //unsubscribe()
+
+    /*
+     //Example of how to dispatch action to store and modify global state
+     const props = this.props;
+     const { store } = this.context;
+     const state = store.getState();
+     store.dispatch(AppActions.openMenu());
+
+     //subscribe callback handleChange to global state change
+     this.unsubscribe = store.subscribe(() =>
+      this.handleChange()
+     );
+     */
   }
 
   componentWillUnmount(){
     //console.log('Header Component Will UnMount');
   }
-  // AppActions.toggleHeaderMenu.bind(null, props.menu)
 
-  clickHandler( e ){
-    let button = e.target,
-      isOpen = button.classList.toggle('change');
+  //menu click handler updates local state
+  menuClickHandler( e ){
+    console.log('app-header :: clickHandler');
 
-    if(isOpen){
-      this.overlay.classList.add('show');
-    }else{
-      this.overlay.classList.remove('show');
-    }
+
+    // if(this.props.menu === -1){
+    //   console.log('menu was closed try to open it')
+    //   store.dispatch({
+    //     type: AppConstants.OPEN_MENU
+    //   });
+    // }
+    // let button = e.target,
+    //   isOpen = button.classList.toggle('change');
+    //
+    // if(isOpen){
+    //   this.overlay.classList.add('show');
+    // }else{
+    //   this.overlay.classList.remove('show');
+    // }
   }
 
-  render( props ){
-    console.log('header render props: ', props);
+  render( ){
+    console.log('app-header :: render: ');
+    const props = this.props;
+    const { store } = this.context;
+    const state = store.getState();
+
     return (
       <div className='header'>
-        <Button className='button' handler={ this.clickHandler }></Button>
+        <Button className='button' handler={ this.menuClickHandler }></Button>
         <div className='overlay'></div>
       </div>
     );
   }
 }
 
-Header.propTypes =  {
-  menu: PropTypes.string.isRequired
-}
-
-Header.defaultProps = {
-  menu: 'closed'
+//Add Global Store from Provider to component context
+Header.contextTypes = {
+  store: PropTypes.object
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+//Example of using propTypes
+// Header.propTypes =  {
+//   menu: PropTypes.string.isRequired
+// }
+//
+// Header.defaultProps = {
+//   menu: 'closed'
+// };
+
+export default Header;//connect(mapStateToProps, mapDispatchToProps)(Header);
