@@ -1,4 +1,5 @@
+//Actions
 export default {
-  OPEN_MENU: 'OPEN_MENU',
-  CLOSE_MENU: 'CLOSE_MENU'
+  OPEN_MENU: 1,
+  CLOSE_MENU: -1
 }

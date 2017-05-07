@@ -32,7 +32,7 @@ class BarChart extends React.Component {
     }).on('draw', function(data) {
       if(data.type === 'bar') {
         data.element.attr({
-          style: 'stroke-width: 30px'
+          style: 'stroke-width: 20px'
         });
       }
     });

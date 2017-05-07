@@ -21,9 +21,16 @@ const AppStore = Object.assign(EventEmitter.prototype, {
     this.removeListener( CHANGE_EVENT, callback )
   },
 
-  async getActivityNumbers(){
-    return await ActivityAPI.getActivityNumbers();
+  getActivityNumbers(){
+    var numbers = ActivityAPI.getActivityNumbers();
+    console.log('AppStore numbers: ',numbers);
+    return numbers;
   },
+  // async getActivityNumbers(){
+  //   var numbers = await ActivityAPI.getActivityNumbers();
+  //   console.log('numbers: ',numbers);
+  //   return numbers;
+  // },
 
   dispatcherIndex: register( function( action ){
 

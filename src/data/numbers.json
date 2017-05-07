@@ -1,5 +1,5 @@
 {
-  "numbers_activity": [
+  "activity_numbers": [
     ["", "Calls", "Emails", "Deal", "Stage 1",  { "role": "annotation" },  { "role": "annotation" }  ],
     ["Dunkin Donuts", 530, 590, 620, 632, 1200, ""],
     ["Liberty Mutual", 316, 422, 443, 490, 770,  ""],
