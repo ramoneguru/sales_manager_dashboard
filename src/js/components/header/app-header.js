@@ -64,13 +64,4 @@ Header.contextTypes = {
   store: PropTypes.object
 };
 
-//Example of using propTypes
-// Header.propTypes =  {
-//   menu: PropTypes.string.isRequired
-// }
-//
-// Header.defaultProps = {
-//   menu: 'closed'
-// };
-
 export default Header;//connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -2,21 +2,21 @@ import fetch from 'isomorphic-fetch';
 import AppConstants from '../constants/app-constants';
 
 //Action Creators
-function invalidateActivityNumbers(repId){
+const invalidateActivityNumbers = (repId) => {
   return {
     type: AppConstants.INVALIDATE_ACTIVITY_NUMBERS,
     repId
   }
 }
 
-function requestActivityNumbers(repId){
+const requestActivityNumbers = (repId) => {
   return {
     type: AppConstants.REQUEST_ACTIVITY_NUMBERS,
     repId
   }
 }
 
-function receiveActivityNumbers(repId, json){
+const receiveActivityNumbers = (repId, json) => {
   return {
     type: AppConstants.RECEIVE_ACTIVTY_NUMBERS,
     repId,
@@ -25,7 +25,7 @@ function receiveActivityNumbers(repId, json){
   }
 }
 
-function fetchActivityNumbers(repId){
+const fetchActivityNumbers = (repId) => {
   return function (dispatch) {
     dispatch(requestActivityNumbers(repId))
     return fetch(`${AppConstants.PROTOCOL}//${AppConstants.HOST}/data/numbers.json?${repId}`)
