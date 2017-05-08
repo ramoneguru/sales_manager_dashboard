@@ -1,11 +1,41 @@
 {
-  "activity_numbers": [
-    ["", "Calls", "Emails", "Deal", "Stage 1",  { "role": "annotation" },  { "role": "annotation" }  ],
-    ["Dunkin Donuts", 530, 590, 620, 632, 1200, ""],
-    ["Liberty Mutual", 316, 422, 443, 490, 770,  ""],
-    ["Work Day", 628, 690, 729, 830, 1000,  ""],
-    ["Netflix", 128, 519, 629, 730, 1400, ""],
-    ["Atlassian", 328, 519, 729, 830, 950, ""],
-    ["Kellogs", 128, 319, 429, 480, 550, ""]
-  ]
+  "data":{
+    "entities":[
+      {
+        "id": 1,
+        "name": "Netflix",
+        "data": [128, 519, 629, 730, 1400, ""]
+      },
+      {
+        "id": 2,
+        "name": "Dunkin Donuts",
+        "data": [530, 590, 620, 632, 1200, ""]
+      },
+      {
+        "id": 2,
+        "name": "Liberty Mutual",
+        "data": [316, 422, 443, 490, 770,""]
+      },
+      {
+        "id": 3,
+        "name": "Work Day",
+        "data": [628, 690, 729, 830, 1000, ""]
+      },
+      {
+        "id": 4,
+        "name": "Atlassian",
+        "data": [328, 519, 729, 830, 950, ""]
+      },
+      {
+        "id": 5,
+        "name": "Kellogs",
+        "data": [128, 319, 429, 480, 550, ""]
+      },
+      {
+        "id": 5,
+        "name": "Dunkin Donuts",
+        "data": [530, 590, 620, 632, 1200, ""]
+      }
+    ]
+  }
 }

@@ -1,0 +1,114 @@
+app-actions.js
+State Shape:
+const initialState = {
+  frontend: {
+    isFetching: true,
+    didInvalidate: false,
+    entities:[]
+  },
+  reactjs: {
+    isFetching: false,
+    didInvalidate: false,
+    lastUpdated:1439478405547,
+    entities:[
+    {
+      id: 1,
+      name: 'Netflix'
+    },
+    {
+      id: 2,
+      name: 'Kellogs'
+    }
+    ]
+  }
+};
+
+Actions represent the facts about what happened, reducers update the state according to those actions and the Store is the object that brings them together.
+The Store:
+ Holds appliaction state
+ Allows access to state via getState()
+ Allows state to be updated via dispatch(action)
+ Registers listeners via subscribe(listener)
+ Handles unregistering listeners via the function returned by subscribe(listener)
+
+
+
+app.js
+When a persisted state object from a previous session (possibly loaded from local storage or database) is passed into
+redux -> createStore it will override state determined by reducers (  persistedState,)
+
+app-reducers.js
+Reducers (specify how applications state changes in response to actions) Takes prev state and action and returns the next state (don't mutate state create a copy object)
+
+
+app-header.js
+//not being used
+import { connect } from 'react-redux';//abstracts store.getState(), dispatch, subscribe -- not currently using this but keeping it here for reference and examples
+import { bindActionCreators } from 'redux';
+import AppActions from '../../actions/app-actions';
+import AppConstants from '../../constants/app-constants';
+
+
+// Example of using connect to map global state to props
+const mapStateToProps = function(state){
+console.log('app-header :: mapStateToProps',state);
+    return {
+        menu: state.menu,
+    }
+}
+
+// Example of using connect to dispatch actions
+bindActionCreators(AppActions.openMenu(), dispatch)
+    const mapDispatchToProps = function (dispatch) {
+        console.log('app-header :: dispatch: ');
+        return {
+            menuClickHandler:() => {
+            dispatch(AppActions.openMenu())
+        }
+    }
+}
+
+ //Component Did Mount
+//Example of how to dispatch action to store and modify global state
+const props = this.props;
+const { store } = this.context;
+const state = store.getState();
+store.dispatch(AppActions.openMenu());
+
+
+//subscribe callback handleChange to global state change
+this.unsubscribe = store.subscribe(() =>
+this.handleChange()
+);
+
+//Component Did Unmount
+this.unsubscribe()
+
+
+//Example of using propTypes
+Header.propTypes =  {
+  menu: PropTypes.string.isRequired
+}
+
+Header.defaultProps = {
+  menu: 'closed'
+};
+
+
+//Example of using connect when exporting a component
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+
+
+numbers.json (bak from chartist)
+{
+  "activity_numbers": [
+    ["", "Calls", "Emails", "Deal", "Stage 1",  { "role": "annotation" },  { "role": "annotation" }  ],
+    ["Dunkin Donuts", 530, 590, 620, 632, 1200, ""],
+    ["Liberty Mutual", 316, 422, 443, 490, 770,  ""],
+    ["Work Day", 628, 690, 729, 830, 1000,  ""],
+    ["Netflix", 128, 519, 629, 730, 1400, ""],
+    ["Atlassian", 328, 519, 729, 830, 950, ""],
+    ["Kellogs", 128, 319, 429, 480, 550, ""]
+  ]
+}

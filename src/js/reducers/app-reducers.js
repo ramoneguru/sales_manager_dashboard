@@ -1,25 +1,41 @@
 import { combineReducers } from 'redux'
 import AppConstants from '../constants/app-constants';
-let i = 0;
-//Reducers (specify how applications state changes in response to actions) Takes prev state and action and returns the next state (don't mutate state create a copy object)
-const menu = (state = AppConstants.CLOSE_MENU, action)  => {
+
+const ActivityNumbers = (state = {
+  repId: null,
+  isFetching: false,
+  didInvalidate: false,
+  entities: []
+}, action)  => {
 
   switch( action.type ){
-    case AppConstants.OPEN_MENU:
+
+    case AppConstants.INVALIDATE_ACTIVITY_NUMBERS:
       return Object.assign({}, state, {
-        menu: action.type
+        didInvalidate: true
       })
-    case AppConstants.CLOSE_MENU:
+
+    case AppConstants.REQUEST_ACTIVITY_NUMBERS:
       return Object.assign({}, state, {
-        menu: action.type
+        isFetching: true,
+        didInvalidate: false
       })
+
+    case AppConstants.RECEIVE_ACTIVTY_NUMBERS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        entities: action.entities,
+        lastUpdated: action.receivedAt
+      })
+
     default:
       return state
   }
 }
 
-const salesActivityApp = combineReducers({
-  menu
+const rootReducer = combineReducers({
+  ActivityNumbers
 });
 
-export default salesActivityApp;
+export default rootReducer;

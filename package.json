@@ -12,10 +12,11 @@
   "author": "Andrew Robinson <hello@drewrobinson.com>",
   "license": "ISC",
   "dependencies": {
-    "classnames": "^2.2.5",
     "chartist-webpack": "^0.9.5-0",
+    "classnames": "^2.2.5",
     "css-loader": "^0.28.0",
     "flux": "^3.1.2",
+    "isomorphic-fetch": "^2.2.1",
     "node-sass": "^4.5.2",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
@@ -25,6 +26,8 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
+    "redux-logger": "^3.0.1",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.3",
     "webpack": "^2.4.1",
     "webpack-manifest-plugin": "^1.1.0"

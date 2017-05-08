@@ -1,58 +1,39 @@
 import React from 'react';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Numbers from './numbers/app-numbers';
 import Efficiency from './efficiency/app-efficiency';
 import Template from './app-template';
-import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import AppConstants from '../constants/app-constants';
-import AppActions from '../actions/app-actions';
-import salesActivityApp from '../reducers/app-reducers';
+import fetchActivityNumbers from '../actions/app-actions';
+import rootReducer from '../reducers/app-reducers';
 
-//example of persisted state from previous session possibly loaded from local storage or database
+const loggerMiddleware = createLogger()
+
 const persistedState = {
-  menu: 0,
-  entities: [{
-    id: '1',
-    name: 'Netflix',
-    calls: 57,
-    emails:220,
-    deals: 2
-  }],
+  "ActivityNumbers": {
+    repId: '001',
+    didInvalidate: false,
+    entities: [],
+    isFetching: false,
+    lastUpdated: null
+  }
 };
 
+const store = createStore(
+  rootReducer,
+  persistedState,
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
+);
 
-//State Shape
-// const initialState = {
-//   type: AppConstants.CLOSE_MENU
-// };
-
-//Actions represent the facts about what happened, reducers update the state according to those actions and the Store is the object that brings them together.
-/* The Store:
- Holds appliaction state
- Allows access to state via getState()
- Allows state to be updated via dispatch(action)
- Registers listeners via subscribe(listener)
- Handles unregistering listeners via the function returned by subscribe(listener)
- */
-const store = createStore(salesActivityApp, persistedState);//persistedState object will override state determined by reducers
-
-// console.log('store.getState().menu', store.getState().menu);
-// store.dispatch({
-//   type: AppConstants.OPEN_MENU
-// })
-// console.log('store.getState().menu', store.getState().menu);
-//
-// //test async
-// setTimeout(function() {
-//   if(store.getState().menu === 0){
-//     store.dispatch({
-//       type: AppConstants.CLOSE_MENU
-//     });
-//   }
-//
-//   console.log('store.getState().menu', store.getState().menu);
-// }, 1000);
+store.dispatch(fetchActivityNumbers(persistedState.ActivityNumbers.repId)).then(()=>{ //001 is a mock sales rep employee id
+  //console.log('App Initial State -> store.getState(): ', store.getState())
+})
 
 export default () => {
   return (
