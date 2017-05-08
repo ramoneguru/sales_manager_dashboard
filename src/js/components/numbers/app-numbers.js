@@ -1,30 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BarChart from '../charts/app-bar-chart';
 
-function componentWillMount() {
-  return {
-    data: 'app-numbers-data-placeholder'
+class Numbers extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount(){
+    const { store } = this.context;
+    this.setState(store.getState());
+  }
+
+  componentDidMount(){
+    const { store } = this.context;
+    this.unsubscribe = store.subscribe(() =>
+      this.globalStateChangeHandler()
+    );
+  }
+
+  componentWillUnmount(){
+    this.unsubscribe();
+  }
+
+  globalStateChangeHandler(){
+    const { store } = this.context;
+    this.setState(store.getState());
+  }
+
+  render(){
+    return (
+      <div>
+        <h1>Activity Numbers</h1>
+        <BarChart data={ this.state.ActivityNumbers.entities }></BarChart>
+      </div>
+    )
   }
 }
 
-const Numbers = ( props ) => {
+Numbers.contextTypes = {
+  store: PropTypes.object
+};
 
-  var width, height, ratio, options;
-
-  var renderChart = () => {
-    width = document.body.getBoundingClientRect().width,
-    ratio = 2.4,
-    height = width / ratio;
-    options.width =  width;
-    options.height = height;
-  };
-
-  return (
-    <div>
-      <h1>Activity Numbers</h1>
-      <BarChart></BarChart>
-    </div>
-  )
-}
 
 export default Numbers;

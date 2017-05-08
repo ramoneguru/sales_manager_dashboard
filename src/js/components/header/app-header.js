@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from  './app-header-button';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class Header extends React.Component {
@@ -11,28 +10,7 @@ class Header extends React.Component {
     this.state = {
       menu: 0
     }
-
     this.menuClickHandler = this.menuClickHandler.bind(this);
-  }
-
-  componentWillMount(){}
-
-  componentDidMount(){
-    const props = this.props;
-    const { store } = this.context;
-    
-    this.unsubscribe = store.subscribe(() =>
-      this.globalStateChangeHandler()
-    );
-  }
-
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-
-  globalStateChangeHandler(){
-    const { store } = this.context;
-    console.log('app-header.js :: globalStateChangeHandler', store.getState())
   }
 
   updateMenu(e){
@@ -48,8 +26,6 @@ class Header extends React.Component {
   }
 
   render( ){
-    const props = this.props;
-    const { store } = this.context;
     let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '');
     
     return (
@@ -65,9 +41,5 @@ class Header extends React.Component {
     );
   }
 }
-
-Header.contextTypes = {
-  store: PropTypes.object
-};
 
 export default Header;

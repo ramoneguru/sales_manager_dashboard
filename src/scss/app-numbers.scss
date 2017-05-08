@@ -6,8 +6,9 @@
   height:calc(100vw/2.4);
   background: #fff;
 
-  & > div{
-    display:none;
+  & > .loading-indicator{
+    height:14%;
+
     @extend .animated-background;
 
     &.end{
