@@ -33,7 +33,7 @@ class Numbers extends React.Component {
     return (
       <div>
         <h1>Activity Numbers</h1>
-        <BarChart data={ this.state.ActivityNumbers.entities }></BarChart>
+        <BarChart primary-data={ this.state.ActivityNumbers.entities }></BarChart>
       </div>
     )
   }

@@ -10,7 +10,7 @@ class BarChart extends React.Component {
   }
 
   componentWillMount(){
-    this.setState(this.props.data);
+    this.setState(this.props);
   }
 
   componentDidMount(){}
@@ -18,48 +18,57 @@ class BarChart extends React.Component {
   componentWillUnmount(){}
 
   componentWillReceiveProps(nextProps) {
-    this.setState(nextProps.data, this.updateChart)
+    let aux = Object.assign({}, nextProps,{
+      'chart-data':{ labels: [], series: []}
+    });
+
+    if (aux['primary-data'].length === 0) return;
+
+    var series = [];
+    for(var i = 0; i < aux['primary-data'][0].data.length; i++ ){
+      series[i] = [];
+      for(var j = 0; j < aux['primary-data'].length; j ++){
+        series[i].push(aux['primary-data'][j].data[i])
+      }
+    }
+
+    aux['chart-data']['series'] = series;
+
+    aux['primary-data'].forEach((entity) => {
+      aux['chart-data']['labels'].push(entity.name);
+    });
+
+    this.setState(aux, this.updateChart)
   }
 
   updateChart(){
-    console.log('update chart', this.state);
-    // var width, height, ratio, options;
-    //
-    // var renderChart = () => {
-    //   width = document.body.getBoundingClientRect().width,
-    //     ratio = 2.4,
-    //     height = width / ratio;
-    //   options.width =  width;
-    //   options.height = height;
-    // };
 
-    // new Chartist.Bar('.chart-container', {
-    //   labels: ['Dunkin Donuts', 'Liberty Mutual', 'Work Day', 'Netflix','Atlassian','Kellogs'],
-    //   series: [
-    //     [800000, 500000, 140000, 700000, 700000, 200000],
-    //     [200000, 400000, 500000,  300000, 600000, 150000],
-    //     [100000, 200000, 400000,  100000, 400000, 100000]
-    //   ]
-    // }, {
-    //   stackBars: true,
-    //   horizontalBars: true,
-    //   axisX: {
-    //     labelInterpolationFnc: function(value) {
-    //       return (value / 1000) + 'k';
-    //     }
-    //   }
-    // }).on('draw', function(data) {
-    //   if(data.type === 'bar') {
-    //     data.element.attr({
-    //       style: 'stroke-width: 20px'
-    //     });
-    //   }
-    // });
+    if(this.state['chart-data'].labels.length > 0 && this.state['chart-data'].series.length > 0){
+
+      new Chartist.Bar(this.chartContainer, {
+        labels: this.state['chart-data'].labels,
+        series: this.state['chart-data'].series
+      }, {
+        stackBars: true,
+        axisY: {
+          labelInterpolationFnc: function(value) {
+            return (value / 1000);
+          }
+        }
+      }).on('draw', function(data) {
+        if(data.type === 'bar') {
+          data.element.attr({
+            style: 'stroke-width: 30px'
+          });
+        }
+      });
+
+    }//endif
   }
 
   render( props ){
     return (
-      <div className="chart-container">
+      <div className="chart-container" ref={node => this.chartContainer = node}>
         <div className="loading-indicator animated-background">
           <div className="background-masker"></div>
           <div className="background-masker"></div>
