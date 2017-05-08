@@ -29,15 +29,15 @@ class Header extends React.Component {
     let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '');
     
     return (
-      <div className='header'>
+      <header className='header'>
         <Button active={ this.state.menu } handler={ this.menuClickHandler }></Button>
         <div className={ overlayStyles }>
-          <div className="app-nav">
+          <nav className="app-nav">
             <Link to="/">Activity Numbers</Link>
             <Link to="/efficiency">Activity Efficiency</Link>
-          </div>
+          </nav>
         </div>
-      </div>
+      </header>
     );
   }
 }

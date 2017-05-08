@@ -32,8 +32,17 @@ class Numbers extends React.Component {
   render(){
     return (
       <div>
-        <h1>Activity Numbers</h1>
-        <BarChart primary-data={ this.state.ActivityNumbers.entities }></BarChart>
+        <header className="numbers-header">
+          <h1 className="page-title">Activity Numbers</h1>
+          <div className="chart-menu">
+            <button type="button">30D</button>
+            <button type="button">90D</button>
+            <button type="button">12M</button>
+          </div>
+        </header>
+       <figure className="numbers-chart">
+         <BarChart primary-data={ this.state.ActivityNumbers.entities }></BarChart>
+       </figure>
       </div>
     )
   }

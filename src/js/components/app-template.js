@@ -5,7 +5,12 @@ export default ( props ) => {
   return (
     <div className='container'>
       <Header></Header>
-      { props.children }
+      <section>
+        { props.children }
+      </section>
+      <footer>
+       <span>&#x000A9; 2017 Andrew Robinson &#x0003C;hello&#x00040;drewrobinson.com&#x0003E;</span>
+      </footer>
     </div>
   )
 }

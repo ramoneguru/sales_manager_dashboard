@@ -1,12 +1,36 @@
 @import './animation';
 @import '../../node_modules/chartist-webpack/dist/scss/chartist.scss';
 
+
+.numbers-header{
+  display:flex;
+  flex-direction:row;
+
+  .page-title {
+    flex-grow:1;
+  }
+  .chart-menu{
+    flex-grow:1;
+    display:flex;
+    align-items:center;
+    justify-content: flex-end;
+
+    button{
+      margin:0 0.5em;
+      padding:1em 1.5em;
+      background-color:$primary-grey;
+      border:0px none;
+      border-radius:1em;
+    }
+  }
+}
+
 .chart-container{
-  width:100vw;
   height:calc(100vw/2.4);
-  background: #fff;
+  background: $white;
 
   & > .loading-indicator{
+    display:none;
     height:14%;
 
     @extend .animated-background;
@@ -18,7 +42,7 @@
 }
 
 .background-masker {
-  background: #fff;
+  background: $white;
   position: absolute;
 }
 
