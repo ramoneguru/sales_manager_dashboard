@@ -11,7 +11,7 @@ import salesActivityApp from '../reducers/app-reducers';
 
 //example of persisted state from previous session possibly loaded from local storage or database
 const persistedState = {
-  menu: -1,
+  menu: 0,
   entities: [{
     id: '1',
     name: 'Netflix',
@@ -45,7 +45,7 @@ const store = createStore(salesActivityApp, persistedState);//persistedState obj
 //
 // //test async
 // setTimeout(function() {
-//   if(store.getState().menu === -1){
+//   if(store.getState().menu === 0){
 //     store.dispatch({
 //       type: AppConstants.CLOSE_MENU
 //     });

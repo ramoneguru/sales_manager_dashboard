@@ -1,11 +1,11 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';//abstracts store.getState(), dispatch, subscribe -- not currently using this but keeping it here for reference and examples
-
+import classNames from 'classnames';
 import Button from  './app-header-button';
+import PropTypes from 'prop-types';
 import AppActions from '../../actions/app-actions';
 import AppConstants from '../../constants/app-constants';
-import PropTypes from 'prop-types';
 
 /*
 // Example of using connect to map global state to props
@@ -36,14 +36,13 @@ class Header extends React.Component {
     this.menuClickHandler = this.menuClickHandler.bind(this);
     this.overlay = null;
     this.state = {
-      menu: -1
+      menu: 0
     }
   }
 
   //global state change handler
   handleChange(){
     const { store } = this.context;
-    console.log('store.getState(): ', store.getState());
   }
 
   componentWillMount(){
@@ -54,10 +53,6 @@ class Header extends React.Component {
     console.log('************ app-header did mount ************* ', this);
     const props = this.props;
     const { store } = this.context;
-    const state = store.getState();
-
-    this.overlay = document.querySelector('.overlay');
-
 
     /*
      //Example of how to dispatch action to store and modify global state
@@ -77,37 +72,28 @@ class Header extends React.Component {
     //console.log('Header Component Will UnMount');
   }
 
+  updateMenu(e){
+    console.log('updateMenu state complete');
+    let menuState = this.state.menu;
+  }
+
   //menu click handler updates local state
   menuClickHandler( e ){
-    console.log('app-header :: clickHandler');
-
-
-    // if(this.props.menu === -1){
-    //   console.log('menu was closed try to open it')
-    //   store.dispatch({
-    //     type: AppConstants.OPEN_MENU
-    //   });
-    // }
-    // let button = e.target,
-    //   isOpen = button.classList.toggle('change');
-    //
-    // if(isOpen){
-    //   this.overlay.classList.add('show');
-    // }else{
-    //   this.overlay.classList.remove('show');
-    // }
+    this.setState(function(prevState){
+      let active = ( prevState.menu === 0 ) ? 1 : 0;
+      return { menu: active }
+    }, this.updateMenu(e) );
   }
 
   render( ){
-    console.log('app-header :: render: ');
     const props = this.props;
     const { store } = this.context;
-    const state = store.getState();
-
+    let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '');
+    
     return (
       <div className='header'>
-        <Button className='button' handler={ this.menuClickHandler }></Button>
-        <div className='overlay'></div>
+        <Button active={ this.state.menu } handler={ this.menuClickHandler }></Button>
+        <div className={ overlayStyles }></div>
       </div>
     );
   }

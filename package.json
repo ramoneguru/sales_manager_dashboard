@@ -12,6 +12,7 @@
   "author": "Andrew Robinson <hello@drewrobinson.com>",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "chartist-webpack": "^0.9.5-0",
     "css-loader": "^0.28.0",
     "flux": "^3.1.2",
@@ -23,7 +24,6 @@
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "sass-loader": "^6.0.3",
     "webpack": "^2.4.1",
@@ -34,6 +34,7 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-decorators": "^6.24.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
