@@ -1,5 +1,5 @@
 .header {
-  background-color:#f1f1f1;
+  background-color:$primary-grey;
   min-height:5em;
 
   .overlay {
@@ -7,13 +7,36 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
     height: 100vh;
-    background-color: rgba(241, 241, 241, 0.9);
+    background-color: $primary-grey;
     z-index: 100;
 
     &.active {
       display: block;
+    }
+  }
+
+  .app-nav{
+    height: 100vh;
+    display: flex;
+    flex-flow:column;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      top: -10em;
+      position: relative;
+      margin: 0.35em 0;
+      padding: 1em 0;
+      width: 100vw;
+      text-align: center;
+      font-size: 2em;
+      color: grey;
+      text-decoration: none;
+    }
+
+    a:hover {
+      background-color:$white;
     }
   }
 }

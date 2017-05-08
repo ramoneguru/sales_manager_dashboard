@@ -5,10 +5,16 @@
  * Inline for the state-styles
  *
  */
+@import './color.scss';
 @import './type.scss';
 @import './app-numbers.scss';
 @import './header/app-header';
 @import './header/app-header-button';
+
+html{
+  font-size:$font-size;
+  font-family: $primary-serif-stack;
+}
 
 body{
   margin:0;
@@ -16,6 +22,6 @@ body{
 
 .container{
   height:100vh;
-  background-color:#fff;
+  background-color:$white;
 }
 

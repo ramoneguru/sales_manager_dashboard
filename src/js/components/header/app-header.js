@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from  './app-header-button';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -54,7 +55,12 @@ class Header extends React.Component {
     return (
       <div className='header'>
         <Button active={ this.state.menu } handler={ this.menuClickHandler }></Button>
-        <div className={ overlayStyles }></div>
+        <div className={ overlayStyles }>
+          <div className="app-nav">
+            <Link to="/">Activity Numbers</Link>
+            <Link to="/efficiency">Activity Efficiency</Link>
+          </div>
+        </div>
       </div>
     );
   }
@@ -64,4 +70,4 @@ Header.contextTypes = {
   store: PropTypes.object
 };
 
-export default Header;//connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

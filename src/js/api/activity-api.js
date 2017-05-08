@@ -1,3 +1,4 @@
+//@Deprecated - Replaced with Redux
 const ActivityAPI = {
 
   async xhr( url ){
@@ -12,8 +13,6 @@ const ActivityAPI = {
   protocol: location.protocol,
 
   numbersData: [],
-
-
   
   getActivityNumbers (){
     let data = this.xhr( 'http://' + this.host + '/data/numbers.json' );
