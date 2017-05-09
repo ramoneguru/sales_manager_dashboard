@@ -1,6 +1,6 @@
 .header {
-  background-color:$primary-grey;
-  min-height:5em;
+  background-color: $primary-grey;
+  min-height: 5em;
 
   .overlay {
     display: none;
@@ -16,10 +16,10 @@
     }
   }
 
-  .app-nav{
+  .app-nav {
     height: 100vh;
     display: flex;
-    flex-flow:column;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
 
@@ -36,7 +36,7 @@
     }
 
     a:hover {
-      background-color:$white;
+      background-color: $white;
     }
   }
 }

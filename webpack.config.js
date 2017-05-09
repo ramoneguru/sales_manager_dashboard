@@ -11,7 +11,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   context: resolve(__dirname, 'src'),
-  entry: ['babel-polyfill', './js/main.js', './scss/main.scss'],
+  entry: [ 'babel-polyfill', './js/main.js', './scss/main.scss'],
   output: {
     path:resolve(__dirname, 'dist'),
     filename: 'bundle.[hash].js'
@@ -23,6 +23,7 @@ module.exports = {
   devtool: isDev?  'source-map': 'eval',
   module: {
     rules: [
+
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -56,6 +57,7 @@ module.exports = {
         test: /\.(sass|scss)$/,
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
       },
+
     ]
   },
   plugins: [
@@ -77,13 +79,13 @@ module.exports = {
     }),
     new ManifestPlugin({
       "writeToFileEmit":false,
-      "short_name":"GPC Sales Activity App",
+      "short_name":"Sales Activity App",
       "name": "HackerWeb",
-      "short_name": "HackerWeb",
+      "short_name": "SalesActivityApp",
       "start_url": ".",
       "display": "standalone",
       "background_color": "#fff",
-      "description": "A simply readable Hacker News app."
+      "description": "Activity Performance Metrics For Sales Teams."
     })
   ]
 }

@@ -15,6 +15,7 @@ const loggerMiddleware = createLogger()
 const persistedState = {
   "ActivityNumbers": {
     repId: '001',
+    chartView:"30D",
     didInvalidate: false,
     entities: [],
     isFetching: false,

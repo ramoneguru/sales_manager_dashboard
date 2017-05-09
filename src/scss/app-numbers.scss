@@ -17,15 +17,27 @@
 
     button{
       margin:0 0.5em;
-      padding:1em 1.5em;
+      padding:0.5em 0.75em;
       background-color:$primary-grey;
       border:0px none;
       border-radius:1em;
+      outline:none;
+      cursor: pointer;
+
+      &.active{
+        background-color:darken($primary-grey, 20%);
+      }
+
+      @include susy-breakpoint($bp-medium) {
+        padding:1em 1.5em;
+      }
     }
   }
 }
 
 .chart-container{
+  margin:0;
+  padding:0;
   height:calc(100vw/2.4);
   background: $white;
 

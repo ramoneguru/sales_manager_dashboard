@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BarChart from '../charts/app-bar-chart';
+import classNames from 'classnames';
 
 class Numbers extends React.Component {
 
   constructor(props) {
     super(props);
+    this.chartViewClickHandler = this.chartViewClickHandler.bind(this)
   }
 
   componentWillMount(){
@@ -29,20 +31,31 @@ class Numbers extends React.Component {
     this.setState(store.getState());
   }
 
+  chartViewClickHandler(e){
+    var chartView = e.target.getAttribute('data-view');
+    if(chartView){
+      let aux = Object.assign({}, this.state);
+      aux.ActivityNumbers.chartView = chartView;
+      this.setState(aux)
+    }
+  }
+
   render(){
     return (
       <div>
         <header className="numbers-header">
           <h1 className="page-title">Activity Numbers</h1>
-          <div className="chart-menu">
-            <button type="button">30D</button>
-            <button type="button">90D</button>
-            <button type="button">12M</button>
+          <div className="chart-menu" >
+            <span onClick={this.chartViewClickHandler}>
+              <button type="button" data-view="30D" className={this.state.ActivityNumbers.chartView === '30D' ? 'active' : ''}>30D</button>
+              <button type="button" data-view="90D" className={this.state.ActivityNumbers.chartView === '90D' ? 'active' : ''}>90D</button>
+              <button type="button" data-view="12M" className={this.state.ActivityNumbers.chartView === '12M' ? 'active' : ''}>12M</button>
+            </span>
           </div>
         </header>
-       <figure className="numbers-chart">
-         <BarChart primary-data={ this.state.ActivityNumbers.entities }></BarChart>
-       </figure>
+
+        <BarChart chart-view={this.state.ActivityNumbers.chartView} primary-data={ this.state.ActivityNumbers.entities }></BarChart>
+
       </div>
     )
   }

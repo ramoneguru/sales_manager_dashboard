@@ -22,13 +22,18 @@ class BarChart extends React.Component {
       'chart-data':{ labels: [], series: []}
     });
 
+    let view = aux['chart-view'];
+
     if (aux['primary-data'].length === 0) return;
 
     var series = [];
-    for(var i = 0; i < aux['primary-data'][0].data.length; i++ ){
+
+    // O(n^2) assumes max of six reps per team.
+    // Outer loop for each item of view data; Inner loop number of entities
+    for(var i = 0; i < aux['primary-data'][0][view].length; i++ ){
       series[i] = [];
       for(var j = 0; j < aux['primary-data'].length; j ++){
-        series[i].push(aux['primary-data'][j].data[i])
+        series[i].push(aux['primary-data'][j][view][i])
       }
     }
 
@@ -45,14 +50,21 @@ class BarChart extends React.Component {
 
     if(this.state['chart-data'].labels.length > 0 && this.state['chart-data'].series.length > 0){
 
+      var upperBound = 500;
+      this.state['chart-data'].series.forEach(function(list){
+        var max = Math.max.apply(null, list);
+        upperBound += max;
+      })
+
       new Chartist.Bar(this.chartContainer, {
         labels: this.state['chart-data'].labels,
         series: this.state['chart-data'].series
       }, {
         stackBars: true,
         axisY: {
+          high:upperBound,
           labelInterpolationFnc: function(value) {
-            return (value / 1000);
+            return value;
           }
         }
       }).on('draw', function(data) {
@@ -68,14 +80,14 @@ class BarChart extends React.Component {
 
   render( props ){
     return (
-      <div className="chart-container" ref={node => this.chartContainer = node}>
+      <figure className="chart-container" ref={node => this.chartContainer = node}>
         <div className="loading-indicator animated-background">
           <div className="background-masker"></div>
           <div className="background-masker"></div>
           <div className="background-masker"></div>
           <div className="background-masker"></div>
         </div>
-      </div>
+      </figure>
     );
   }
 }

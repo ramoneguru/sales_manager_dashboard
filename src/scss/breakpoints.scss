@@ -1,0 +1,29 @@
+/**
+ *  Breakpoints
+ */
+
+$bp-small:23rem;
+$bp_medium: 50rem;
+$bp_large: 99rem;
+
+/*
+Mobile First
+@include susy-breakpoint($bp-small) {
+  .container {
+    background-color:red !important;
+  }
+}
+
+@include susy-breakpoint($bp_medium) {
+  .container {
+    background-color:blue !important;
+  }
+}
+
+@include susy-breakpoint($bp_large) {
+  .container {
+    background-color:green !important;
+  }
+}
+
+*/

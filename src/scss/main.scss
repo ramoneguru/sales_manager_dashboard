@@ -5,11 +5,15 @@
  * Inline for the state-styles
  *
  */
-@import './color.scss';
-@import './type.scss';
-@import './app-numbers.scss';
+@import "~susy/sass/susy";
+@import "./breakpoints";
+@import './color';
+@import './type';
+@import './app-numbers';
 @import './header/app-header';
 @import './header/app-header-button';
+
+
 
 html{
   font-size:$font-size;
@@ -20,7 +24,7 @@ body{
   margin:0;
 }
 
-.container{
+.container {
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -28,16 +32,21 @@ body{
 
   & > header, & > section, & > footer {
     box-sizing: border-box;
-    padding:0 2em;
+    padding:0 1em;
+    @include susy-breakpoint($bp-medium) {
+      padding:0 2em;
+    }
   }
 
   footer{
+    margin:0 auto;
     display: flex;
     height: 100vh;
     align-items: flex-end;
     padding-bottom: 2em;
+
+    @include susy-breakpoint($bp-medium) {
+     margin:auto auto;
+    }
   }
 }
-
-
-
