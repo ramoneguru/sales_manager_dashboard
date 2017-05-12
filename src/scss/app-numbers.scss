@@ -61,7 +61,7 @@
         background:$tertiary-grey;
         border-radius:4.2em;
         overflow:hidden;
-        border:solid 0.25em darken($primary-grey, 20%);
+        border:solid 0.25em darken($secondary-white, 20%);
 
         img {
           width:100%;
@@ -85,7 +85,7 @@
 
 .sidebar {
   flex-grow:1;
-  background:#f8f8f8;
+  background:$tertiary-white;
   min-height:10em;
   border-left:#eee 1px solid;
 
@@ -111,14 +111,14 @@
     button{
       margin:0 0.5em;
       padding:0.5em 0.75em;
-      background-color:$primary-grey;
+      background-color:$secondary-white;
       border:0px none;
       border-radius:1em;
       outline:none;
       cursor: pointer;
 
       &.active{
-        background-color:darken($primary-grey, 20%);
+        background-color:darken($secondary-white, 20%);
       }
 
       @include susy-breakpoint($bp-medium) {

@@ -1,5 +1,5 @@
 .header {
-  background-color: $primary-grey;
+  background-color: $secondary-white;
   min-height: 5em;
 
   .overlay {
@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     height: 100vh;
-    background-color: $primary-grey;
+    background-color: $secondary-white;
     z-index: 100;
 
     &.active {

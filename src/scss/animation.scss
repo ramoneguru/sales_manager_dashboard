@@ -28,9 +28,9 @@
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   background: #f6f7f8;
-  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eeeeee), color-stop(18%, #dddddd), color-stop(33%, #eeeeee));
-  background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
-  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, $primary-grey), color-stop(18%, #dddddd), color-stop(33%, $primary-grey));
+  background: -webkit-linear-gradient(left, $primary-grey 8%, #dddddd 18%, $primary-grey 33%);
+  background: linear-gradient(to right, $primary-grey 8%, #dddddd 18%, $primary-grey 33%);
   -webkit-background-size: 800px 400px;
   background-size: 800px 400px;
   position: relative;
