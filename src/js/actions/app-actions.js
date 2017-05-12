@@ -39,4 +39,35 @@ const fetchActivityNumbers = (repId) => {
   }
 }
 
-export default fetchActivityNumbers;
+const requestSalesReps = (repId) => {
+  return {
+    type: AppConstants.REQUEST_SALES_REPS,
+    repId
+  }
+}
+
+const receiveSalesReps = (repId, json) => {
+  return {
+    type: AppConstants.RECEIVE_SALES_REPS,
+    repId,
+    entities: json.data.entities,
+    receivedAt: Date.now()
+  }
+}
+
+const fetchSalesReps = (repId) => {
+  return function (dispatch) {
+    dispatch(requestSalesReps(repId))
+    return fetch(`${AppConstants.PROTOCOL}//${AppConstants.HOST}/data/sales-reps.json?${repId}`)
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveSalesReps(repId, json))
+      )
+      .catch(function(reason) {
+        throw new Error('Network Error: ' + reason)
+      });
+  }
+}
+
+
+export { fetchSalesReps, fetchActivityNumbers }

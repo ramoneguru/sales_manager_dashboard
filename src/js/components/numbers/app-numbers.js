@@ -1,7 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import NumbersSummary from './app-numbers-summary';
 import BarChart from '../charts/app-bar-chart';
 import classNames from 'classnames';
+
+const mapStateToProps = (state) => {
+  return {
+    'sales-reps': state.SalesReps,
+    'activity-numbers': state.ActivityNumbers
+  }
+}
 
 class Numbers extends React.Component {
 
@@ -10,32 +19,25 @@ class Numbers extends React.Component {
     this.chartViewClickHandler = this.chartViewClickHandler.bind(this)
   }
 
-  componentWillMount(){
-    const { store } = this.context;
-    this.setState(store.getState());
+  componentWillMount() {
+    this.setState({
+      'activity-numbers':this.props['activity-numbers'],
+      'sales-reps':this.props['sales-reps']
+    });
   }
 
-  componentDidMount(){
-    const { store } = this.context;
-    this.unsubscribe = store.subscribe(() =>
-      this.globalStateChangeHandler()
-    );
-  }
-
-  componentWillUnmount(){
-    this.unsubscribe();
-  }
-
-  globalStateChangeHandler(){
-    const { store } = this.context;
-    this.setState(store.getState());
+  componentWillReceiveProps(props) {
+    this.setState({
+      'activity-numbers':props['activity-numbers'],
+      'sales-reps':props['sales-reps']
+    });
   }
 
   chartViewClickHandler(e){
     var chartView = e.target.getAttribute('data-view');
     if(chartView){
       let aux = Object.assign({}, this.state);
-      aux.ActivityNumbers.chartView = chartView;
+      aux['activity-numbers'].chartView = chartView;
       this.setState(aux)
     }
   }
@@ -46,24 +48,31 @@ class Numbers extends React.Component {
         <header className="numbers-header">
           <h1 className="page-title">Activity Numbers</h1>
           <div className="chart-menu" >
-            <span onClick={this.chartViewClickHandler}>
-              <button type="button" data-view="30D" className={this.state.ActivityNumbers.chartView === '30D' ? 'active' : ''}>30D</button>
-              <button type="button" data-view="90D" className={this.state.ActivityNumbers.chartView === '90D' ? 'active' : ''}>90D</button>
-              <button type="button" data-view="12M" className={this.state.ActivityNumbers.chartView === '12M' ? 'active' : ''}>12M</button>
-            </span>
+             <span onClick={this.chartViewClickHandler}>
+              <button type="button" data-view="30D" className={this.state['activity-numbers'].chartView === '30D' ? 'active' : ''}>30D</button>
+              <button type="button" data-view="90D" className={this.state['activity-numbers'].chartView === '90D' ? 'active' : ''}>90D</button>
+              <button type="button" data-view="12M" className={this.state['activity-numbers'].chartView === '12M' ? 'active' : ''}>12M</button>
+             </span>
           </div>
         </header>
 
-        <BarChart chart-view={this.state.ActivityNumbers.chartView} primary-data={ this.state.ActivityNumbers.entities }></BarChart>
+        <BarChart chart-view={ this.state['activity-numbers'].chartView}
+                  primary-data={ this.state['activity-numbers'].entities }
+                  sales-reps={ this.state['sales-reps'].entities }></BarChart>
 
+        <section className="activity-metrics">
+          <div className="wrap">
+            <div className="content">
+              <NumbersSummary primary-data={ this.state['activity-numbers'].entities }
+                              sales-reps={ this.state['sales-reps'].entities } />
+            </div>
+            <div className="sidebar">sidebar</div>
+          </div>
+        </section>
       </div>
     )
   }
 }
 
-Numbers.contextTypes = {
-  store: PropTypes.object
-};
 
-
-export default Numbers;
+export default connect(mapStateToProps)(Numbers);

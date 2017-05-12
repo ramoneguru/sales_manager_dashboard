@@ -1,0 +1,30 @@
+{
+  "data":{
+    "entities":{
+      "85719831": {
+        "name": "Marie Curie",
+        "avatar":"85719831.jpeg"
+      },
+      "85719832": {
+        "name": "Max Planck",
+        "avatar":"85719832.jpeg"
+      },
+      "85719833": {
+        "name": "Louis Pasteur",
+        "avatar":"85719833.jpeg"
+      },
+      "85719834": {
+        "name": "Niels Bohr",
+        "avatar":"85719834.jpeg"
+      },
+      "85719835": {
+        "name": "Galileo Galilei",
+        "avatar":"85719835.jpeg"
+      },
+      "85719836": {
+        "name": "Joseph Thomson",
+        "avatar":"85719836.jpeg"
+      }
+    }
+  }
+}

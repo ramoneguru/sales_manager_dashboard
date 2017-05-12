@@ -13,8 +13,6 @@
 @import './header/app-header';
 @import './header/app-header-button';
 
-
-
 html{
   font-size:$font-size;
   font-family: $primary-serif-stack;
@@ -28,7 +26,7 @@ body{
   height: 100vh;
   display: flex;
   flex-flow: column;
-  background-color: $white;
+  background-color: $primary-white;
 
   & > header, & > section, & > footer {
     box-sizing: border-box;
@@ -42,8 +40,10 @@ body{
     margin:0 auto;
     display: flex;
     height: 100vh;
+    min-height:5em;
     align-items: flex-end;
     padding-bottom: 2em;
+    justify-content: flex-end;
 
     @include susy-breakpoint($bp-medium) {
      margin:auto auto;

@@ -13,36 +13,33 @@ class BarChart extends React.Component {
     this.setState(this.props);
   }
 
-  componentDidMount(){}
-
-  componentWillUnmount(){}
-
-  componentWillReceiveProps(nextProps) {
-    let aux = Object.assign({}, nextProps,{
+  componentWillReceiveProps(props) {
+    let aux = Object.assign({}, props,{
       'chart-data':{ labels: [], series: []}
-    });
-
-    let view = aux['chart-view'];
+    }),
+      view = aux['chart-view'],
+      series = [],
+      labels = [];
 
     if (aux['primary-data'].length === 0) return;
 
-    var series = [];
-
-    // O(n^2) assumes max of six reps per team.
+    // O(n^2) assumes max of six reps per team and max of 12mo historical data
     // Outer loop for each item of view data; Inner loop number of entities
     for(var i = 0; i < aux['primary-data'][0][view].length; i++ ){
       series[i] = [];
       for(var j = 0; j < aux['primary-data'].length; j ++){
+
         series[i].push(aux['primary-data'][j][view][i])
+
+        //Lookup sales rep name using series repId
+        if(!labels.includes(aux['sales-reps'][aux['primary-data'][j].repId].name)){
+          labels.push(aux['sales-reps'][aux['primary-data'][j].repId].name)
+        }
       }
     }
 
     aux['chart-data']['series'] = series;
-
-    aux['primary-data'].forEach((entity) => {
-      aux['chart-data']['labels'].push(entity.name);
-    });
-
+    aux['chart-data']['labels'] = labels;
     this.setState(aux, this.updateChart)
   }
 
@@ -80,14 +77,22 @@ class BarChart extends React.Component {
 
   render( props ){
     return (
-      <figure className="chart-container" ref={node => this.chartContainer = node}>
-        <div className="loading-indicator animated-background">
-          <div className="background-masker"></div>
-          <div className="background-masker"></div>
-          <div className="background-masker"></div>
-          <div className="background-masker"></div>
-        </div>
-      </figure>
+      <div>
+        <figure className="chart-container" ref={node => this.chartContainer = node}>
+          <div className="loading-indicator animated-background">
+            <div className="background-masker"></div>
+            <div className="background-masker"></div>
+            <div className="background-masker"></div>
+            <div className="background-masker"></div>
+          </div>
+        </figure>
+        <ul className="chart-key">
+          <li><i className="call"></i> Call</li>
+          <li><i className="email"></i> Prosp. Email</li>
+          <li><i className="deal"></i> Deal</li>
+          <li><i className="stage2"></i> Stage 2</li>
+        </ul>
+      </div>
     );
   }
 }

@@ -7,14 +7,21 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Numbers from './numbers/app-numbers';
 import Efficiency from './efficiency/app-efficiency';
 import Template from './app-template';
-import fetchActivityNumbers from '../actions/app-actions';
+import { fetchSalesReps, fetchActivityNumbers} from '../actions/app-actions';
 import rootReducer from '../reducers/app-reducers';
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 
 const persistedState = {
+  "SalesReps": {
+    repId: '85719830',
+    didInvalidate: false,
+    entities:[],
+    isFetching: false,
+    lastUpdated: null
+  },
   "ActivityNumbers": {
-    repId: '001',
+    repId: '85719830',
     chartView:"30D",
     didInvalidate: false,
     entities: [],
@@ -27,19 +34,24 @@ const store = createStore(
   rootReducer,
   persistedState,
   applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
+    thunkMiddleware
+    //,loggerMiddleware
   )
 );
 
-store.dispatch(fetchActivityNumbers(persistedState.ActivityNumbers.repId)).then(()=>{ //001 is a mock sales rep employee id
-  //console.log('App Initial State -> store.getState(): ', store.getState())
-})
+//wait for all promises to resolve
+Promise.all([
+  store.dispatch(fetchSalesReps(persistedState.ActivityNumbers.repId)),
+  store.dispatch(fetchActivityNumbers(persistedState.ActivityNumbers.repId))
+]).then(() => {
+  console.log('App Initial State -> store.getState(): ', store.getState())
+});
+
 
 export default () => {
   return (
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <Template>
           <Switch>
             <Route exact path="/" component={ Numbers }/>

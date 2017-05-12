@@ -1,6 +1,99 @@
+@import "~susy/sass/susy";
 @import './animation';
 @import '../../node_modules/chartist-webpack/dist/scss/chartist.scss';
 
+.wrap {
+  margin-top:2em;
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  justify-content: space-around;
+
+  @include susy-breakpoint($bp-medium) {
+    flex-direction:row;
+  }
+}
+
+.content {
+  flex-grow:3;
+  background-color:$secondary-white;
+
+}
+
+.rep_summary {
+  padding:2em 2em 2em 2em;
+
+  @include susy-breakpoint($bp-medium) {
+    padding-left:6em;
+  }
+
+  .rep_summary--header{
+    margin:0 0 2em 0;
+    display:flex;
+
+    & > div {
+      flex-grow:1;
+    }
+
+    & > div:first-child{
+      flex-grow:12;
+    }
+  }
+
+  .rep_summary--item {
+    min-height: 7em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family:$primary-sans-serif-stack;
+    font-size:1.5em;
+
+    figure{
+      margin:0;
+      display:flex;
+      flex-grow:9;
+
+      span{
+        display:inline-block;
+        margin-right:1em;
+        width: 4.2em;
+        height: 4.2em;
+        background:$tertiary-grey;
+        border-radius:4.2em;
+        overflow:hidden;
+        border:solid 0.25em darken($primary-grey, 20%);
+
+        img {
+          width:100%;
+          height:100%;
+        }
+      }
+
+      figcaption{
+        align-self:center;
+        font-weight:bold;
+      }
+    }
+
+
+    & > span {
+      flex-grow:1;
+      font-size:2em;
+    }
+  }
+}
+
+.sidebar {
+  flex-grow:1;
+  background:#f8f8f8;
+  min-height:10em;
+  border-left:#eee 1px solid;
+
+  @include susy-breakpoint($bp-medium) {
+    padding:1em 1.5em;
+    min-height:inherit;
+  }
+}
 
 .numbers-header{
   display:flex;
@@ -35,11 +128,59 @@
   }
 }
 
+
+ul.chart-key{
+  display: flex;
+  padding: 0.75em;
+  flex-direction: row;
+  justify-content:center;
+  background-color:$primary-white;
+  -webkit-box-shadow: 2px 2px 2px $secondary-grey;
+  box-shadow: 2px 2px 2px $secondary-grey;
+
+  li{
+    margin:0 1em;
+    list-style:none;
+    list-style-type:none;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+  }
+
+  i{
+    margin:0 0.5em 0 0;
+    display:inline-block;
+    width: 1.5em;
+    height: 1.5em;
+
+    &.call{
+      background-color:$red;
+    }
+
+    &.email{
+      background-color:$pink;
+    }
+
+    &.deal{
+      background-color:$yellow;
+    }
+
+    &.stage2{
+      background-color:$orange;
+    }
+  }
+}
+
 .chart-container{
   margin:0;
   padding:0;
   height:calc(100vw/2.4);
-  background: $white;
+  background: $primary-white;
+
+  .ct-label {
+    color:$tertiary-grey;
+  }
 
   & > .loading-indicator{
     display:none;
@@ -54,7 +195,7 @@
 }
 
 .background-masker {
-  background: $white;
+  background: $primary-white;
   position: absolute;
 }
 
