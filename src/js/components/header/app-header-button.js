@@ -1,6 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/**
+ * Represents App Header Nav Menu Button
+ * @param props
+ * @returns {XML}
+ * @constructor
+ */
 const Button = (props) => {
   var styles = classNames('button', props.active === 1 ? 'active' : '');
 

@@ -1,9 +1,9 @@
 import AppConstants from '../constants/app-constants';
 
 const SalesReps = (state = {
-  isFetching: false,
   didInvalidate: false,
-  entities: []
+  isFetching: false,
+  lastUpdated: null
 }, action)  => {
 
   switch( action.type ){

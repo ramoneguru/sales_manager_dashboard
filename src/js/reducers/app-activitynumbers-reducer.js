@@ -1,11 +1,9 @@
 import AppConstants from '../constants/app-constants';
 
 const ActivityNumbers = (state = {
-  repId: null,
-  chartView:"30D",
-  isFetching: false,
   didInvalidate: false,
-  entities: []
+  isFetching: false,
+  lastUpdated: null
 }, action)  => {
 
   switch( action.type ){

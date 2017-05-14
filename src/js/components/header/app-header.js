@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Button from  './app-header-button';
 import classNames from 'classnames';
 
+/**
+ * Represents App Header, Nav and Overlay
+ */
 class Header extends React.Component {
 
   constructor(props) {
