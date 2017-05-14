@@ -173,6 +173,7 @@ ul.chart-key{
 }
 
 .chart-container{
+  display:flex;
   margin:0;
   padding:0;
   height:calc(100vw/2.4);
@@ -183,8 +184,9 @@ ul.chart-key{
   }
 
   & > .loading-indicator{
-    display:none;
-    height:14%;
+    display:flex;
+    flex:1;
+    justify-content:space-between;
 
     @extend .animated-background;
 
@@ -195,26 +197,8 @@ ul.chart-key{
 }
 
 .background-masker {
+  display:flex;
+  flex:1;
+  max-width:2em;
   background: $primary-white;
-  position: absolute;
-}
-
-.background-masker{
-  width: auto;
-  left: 0;
-  right: 0;
-  top: 60px;
-  height: 8px;
-}
-
-.chart-container > div > div:nth-child(1){
-  top: 8px;
-}
-
-.chart-container > div > div:nth-child(2){
-  top: 32px;
-}
-
-.chart-container > div > div:nth-child(3){
-  top: 48px;
 }

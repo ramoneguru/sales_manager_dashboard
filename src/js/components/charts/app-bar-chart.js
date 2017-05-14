@@ -1,6 +1,6 @@
 import React from 'react';
 import Chartist from 'chartist-webpack';
-import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class BarChart extends React.Component {
 
@@ -21,19 +21,20 @@ class BarChart extends React.Component {
       series = [],
       labels = [];
 
-    if (aux['primary-data'].length === 0) return;
 
-    // O(n^2) assumes max of six reps per team and max of 12mo historical data
-    // Outer loop for each item of view data; Inner loop number of entities
-    for(var i = 0; i < aux['primary-data'][0][view].length; i++ ){
-      series[i] = [];
-      for(var j = 0; j < aux['primary-data'].length; j ++){
+    if( aux['primary-data'].length > 0 && Object.keys(aux['sales-reps']).length > 0 ) {
+      // O(n^2) assumes max of six reps per team and max of 12Months historical data
+      // Outer loop for each item of view data; Inner loop number of entities
+      for (var i = 0; i < aux['primary-data'][0][view].length; i++) {
+        series[i] = [];
+        for (var j = 0; j < aux['primary-data'].length; j++) {
 
-        series[i].push(aux['primary-data'][j][view][i])
+          series[i].push(aux['primary-data'][j][view][i])
 
-        //Lookup sales rep name using series repId
-        if(!labels.includes(aux['sales-reps'][aux['primary-data'][j].repId].name)){
-          labels.push(aux['sales-reps'][aux['primary-data'][j].repId].name)
+          //Lookup sales rep name using series repId
+          if (!labels.includes(aux['sales-reps'][aux['primary-data'][j].repId].name)) {
+            labels.push(aux['sales-reps'][aux['primary-data'][j].repId].name)
+          }
         }
       }
     }
@@ -44,9 +45,7 @@ class BarChart extends React.Component {
   }
 
   updateChart(){
-
     if(this.state['chart-data'].labels.length > 0 && this.state['chart-data'].series.length > 0){
-
       var upperBound = 500;
       this.state['chart-data'].series.forEach(function(list){
         var max = Math.max.apply(null, list);
@@ -71,8 +70,7 @@ class BarChart extends React.Component {
           });
         }
       });
-
-    }//endif
+    }
   }
 
   render( props ){
@@ -80,6 +78,9 @@ class BarChart extends React.Component {
       <div>
         <figure className="chart-container" ref={node => this.chartContainer = node}>
           <div className="loading-indicator animated-background">
+            <div className="background-masker"></div>
+            <div className="background-masker"></div>
+            <div className="background-masker"></div>
             <div className="background-masker"></div>
             <div className="background-masker"></div>
             <div className="background-masker"></div>
@@ -96,5 +97,17 @@ class BarChart extends React.Component {
     );
   }
 }
+
+BarChart.propTypes =  {
+  'chart-view': PropTypes.string.isRequired,
+  'primary-data': PropTypes.array.isRequired,
+  'sales-reps': PropTypes.object.isRequired
+}
+
+BarChart.defaultProps = {
+  'chart-view': '30D',
+  'primary-data':[],
+  'sales-reps':{}
+};
 
 export default BarChart;

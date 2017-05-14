@@ -5,9 +5,9 @@
   "main": "webpack.config.js",
   "scripts": {
     "start-dev": "npm run clean-dist && mkdir dist && npm run copy-files && webpack-dev-server --d",
-    "build": "webpack && sw-precache --root=dist --config=sw-precache-config.js",
+    "build": "npm run clean-dist && mkdir dist && npm run copy-files && webpack && sw-precache --root=dist --config=sw-precache-config.js",
     "clean-dist": "rimraf dist",
-    "copy-files": "cp -a src/data dist/data && cp -a src/images dist/images"
+    "copy-files": "cp -a src/data dist/data && cp -a src/images dist/images && cp -a src/favicon.ico dist"
   },
   "author": "Andrew Robinson <hello@drewrobinson.com>",
   "license": "ISC",

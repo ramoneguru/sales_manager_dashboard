@@ -1,6 +1,5 @@
 import React from 'react';
 import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
@@ -9,24 +8,24 @@ import Efficiency from './efficiency/app-efficiency';
 import Template from './app-template';
 import { fetchSalesReps, fetchActivityNumbers} from '../actions/app-actions';
 import rootReducer from '../reducers/app-reducers';
-
-const loggerMiddleware = createLogger();
+//import { createLogger } from 'redux-logger'
+//const loggerMiddleware = createLogger();
 
 const persistedState = {
-  "SalesReps": {
-    repId: '85719830',
+  SalesReps: {
+    repId: 85719830,
     didInvalidate: false,
-    entities:[],
+    entities:{},
     isFetching: false,
-    lastUpdated: null
+    lastUpdated: 1494782944068
   },
-  "ActivityNumbers": {
-    repId: '85719830',
-    chartView:"30D",
+  ActivityNumbers: {
+    repId: 85719830,
+    chartView:'30D',
     didInvalidate: false,
     entities: [],
     isFetching: false,
-    lastUpdated: null
+    lastUpdated: 1494782944068
   }
 };
 
@@ -35,7 +34,6 @@ const store = createStore(
   persistedState,
   applyMiddleware(
     thunkMiddleware
-    //,loggerMiddleware
   )
 );
 

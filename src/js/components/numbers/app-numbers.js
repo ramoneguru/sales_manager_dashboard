@@ -3,15 +3,31 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NumbersSummary from './app-numbers-summary';
 import BarChart from '../charts/app-bar-chart';
-import classNames from 'classnames';
 
+/**
+ * MapStateToProps (HOC)
+ * @desc Use default props unless state lastUpdated property is set
+ * @param state
+ * @returns {{}}
+ */
 const mapStateToProps = (state) => {
-  return {
-    'sales-reps': state.SalesReps,
-    'activity-numbers': state.ActivityNumbers
+
+  let props = {}
+
+  if(state.ActivityNumbers.lastUpdated){
+    props['activity-numbers'] = state.ActivityNumbers;
   }
+
+  if(state.SalesReps.lastUpdated){
+    props['sales-reps'] = state.SalesReps;
+  }
+
+  return props;
 }
 
+/**
+ * Represents a sales team's number of activities
+ */
 class Numbers extends React.Component {
 
   constructor(props) {
@@ -63,8 +79,7 @@ class Numbers extends React.Component {
         <section className="activity-metrics">
           <div className="wrap">
             <div className="content">
-              <NumbersSummary primary-data={ this.state['activity-numbers'].entities }
-                              sales-reps={ this.state['sales-reps'].entities } />
+              <NumbersSummary primary-data={ this.state['activity-numbers'].entities } sales-reps={ this.state['sales-reps'].entities } />
             </div>
             <div className="sidebar">sidebar</div>
           </div>
@@ -74,5 +89,14 @@ class Numbers extends React.Component {
   }
 }
 
+Numbers.propTypes =  {
+  'activity-numbers': PropTypes.object.isRequired,
+  'sales-reps': PropTypes.object.isRequired
+}
+
+Numbers.defaultProps = {
+  'activity-numbers': { chartView: '30D' },
+  'sales-reps':{}
+};
 
 export default connect(mapStateToProps)(Numbers);
