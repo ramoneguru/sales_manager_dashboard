@@ -2,7 +2,7 @@ import AppConstants from '../constants/app-constants';
 
 const SalesReps = (state = {
   didInvalidate: false,
-  isFetching: false,
+  isFetching: true,
   lastUpdated: null
 }, action)  => {
 

@@ -1,7 +1,3 @@
-/**
- * @TODO: turn on caching, minification for HtmlWebpackPlugin
- */
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
@@ -17,13 +13,11 @@ module.exports = {
     filename: 'bundle.[hash].js'
   },
   devServer: {
-    inline: true,
     contentBase: './dist'
   },
-  devtool: isDev?  'source-map': 'eval',
+  devtool: isDev ?  'source-map': 'eval',
   module: {
     rules: [
-
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -66,7 +60,7 @@ module.exports = {
       title: 'Sales Activity Dashboard App',
       template: './index.html',
       filename: './index.html',
-      inject:true,
+      inject: true,
       cache: false,
       minify:{
         removeComments:false,
@@ -74,7 +68,7 @@ module.exports = {
       }
     }),
     new ExtractTextPlugin({
-      filename:   'bundle.[hash].css',
+      filename: 'bundle.[hash].css',
       allChunks: true
     }),
     new ManifestPlugin({

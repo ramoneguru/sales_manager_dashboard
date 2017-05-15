@@ -4,25 +4,13 @@ import PropTypes from 'prop-types';
 import NumbersSummary from './app-numbers-summary';
 import BarChart from '../charts/app-bar-chart';
 
-/**
- * MapStateToProps (HOC)
- * @desc Use default props unless state lastUpdated property is set
- * @param state
- * @returns {{}}
- */
+
 const mapStateToProps = (state) => {
-
-  let props = {}
-
-  if(state.ActivityNumbers.lastUpdated){
-    props['activity-numbers'] = state.ActivityNumbers;
+  return {
+    activityNumbers: state.ActivityNumbers,
+    salesReps:state.SalesReps,
+    chartView:'30D'
   }
-
-  if(state.SalesReps.lastUpdated){
-    props['sales-reps'] = state.SalesReps;
-  }
-
-  return props;
 }
 
 /**
@@ -36,26 +24,29 @@ class Numbers extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({
-      'activity-numbers':this.props['activity-numbers'],
-      'sales-reps':this.props['sales-reps']
-    });
+    this.propsChangeHandler()
   }
 
   componentWillReceiveProps(props) {
-    this.setState({
-      'activity-numbers':props['activity-numbers'],
-      'sales-reps':props['sales-reps']
-    });
+   this.propsChangeHandler(props)
   }
 
   chartViewClickHandler(e){
-    var chartView = e.target.getAttribute('data-view');
+    var chartView = e.target.getAttribute('data-chartView');
     if(chartView){
       let aux = Object.assign({}, this.state);
-      aux['activity-numbers'].chartView = chartView;
-      this.setState(aux)
+      aux.chartView = chartView;
+      this.propsChangeHandler(aux)
     }
+  }
+
+  propsChangeHandler(_props){
+    const props = _props || this.props;
+    this.setState({
+      activityNumbers:props.activityNumbers,
+      salesReps:props.salesReps,
+      chartView:props.chartView
+    });
   }
 
   render(){
@@ -65,21 +56,19 @@ class Numbers extends React.Component {
           <h1 className="page-title">Activity Numbers</h1>
           <div className="chart-menu" >
              <span onClick={this.chartViewClickHandler}>
-              <button type="button" data-view="30D" className={this.state['activity-numbers'].chartView === '30D' ? 'active' : ''}>30D</button>
-              <button type="button" data-view="90D" className={this.state['activity-numbers'].chartView === '90D' ? 'active' : ''}>90D</button>
-              <button type="button" data-view="12M" className={this.state['activity-numbers'].chartView === '12M' ? 'active' : ''}>12M</button>
+              <button type="button" data-chartView='30D' className={this.state.chartView === '30D' ? 'active' : ''}>30D</button>
+              <button type="button" data-chartView='90D' className={this.state.chartView === '90D' ? 'active' : ''}>90D</button>
+              <button type="button" data-chartView='12M' className={this.state.chartView === '12M' ? 'active' : ''}>12M</button>
              </span>
           </div>
         </header>
 
-        <BarChart chart-view={ this.state['activity-numbers'].chartView}
-                  primary-data={ this.state['activity-numbers'].entities }
-                  sales-reps={ this.state['sales-reps'].entities }></BarChart>
+        <BarChart activityNumbers={ this.state.activityNumbers} salesReps={ this.state.salesReps } chartView={ this.state.chartView }></BarChart>
 
         <section className="activity-metrics">
           <div className="wrap">
             <div className="content">
-              <NumbersSummary primary-data={ this.state['activity-numbers'].entities } sales-reps={ this.state['sales-reps'].entities } />
+              <NumbersSummary activityNumbers={ this.state.activityNumbers.entities } salesReps={ this.state.salesReps.entities } />
             </div>
             <div className="sidebar">sidebar</div>
           </div>
@@ -90,13 +79,9 @@ class Numbers extends React.Component {
 }
 
 Numbers.propTypes =  {
-  'activity-numbers': PropTypes.object.isRequired,
-  'sales-reps': PropTypes.object.isRequired
+  'activityNumbers': PropTypes.object.isRequired,
+  'salesReps': PropTypes.object.isRequired,
+  'chartView': PropTypes.string.isRequired
 }
-
-Numbers.defaultProps = {
-  'activity-numbers': { chartView: '30D' },
-  'sales-reps':{}
-};
 
 export default connect(mapStateToProps)(Numbers);

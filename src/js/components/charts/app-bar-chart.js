@@ -1,6 +1,7 @@
 import React from 'react';
 import Chartist from 'chartist-webpack';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class BarChart extends React.Component {
 
@@ -14,70 +15,71 @@ class BarChart extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    if (props.activityNumbers.isFetching || props.salesReps.isFetching) return;
+
     let aux = Object.assign({}, props,{
-      'chart-data':{ labels: [], series: []}
+      'chartData':{ labels: [], series: []}
     }),
-      view = aux['chart-view'],
-      series = [],
-      labels = [];
 
+    chartView = aux['chartView'],
+    series = [],
+    labels = [],
+    i = 0,
+    _numEntities = aux.activityNumbers.entities;
 
-    if( aux['primary-data'].length > 0 && Object.keys(aux['sales-reps']).length > 0 ) {
-      // O(n^2) assumes max of six reps per team and max of 12Months historical data
-      // Outer loop for each item of view data; Inner loop number of entities
-      for (var i = 0; i < aux['primary-data'][0][view].length; i++) {
-        series[i] = [];
-        for (var j = 0; j < aux['primary-data'].length; j++) {
-
-          series[i].push(aux['primary-data'][j][view][i])
-
-          //Lookup sales rep name using series repId
-          if (!labels.includes(aux['sales-reps'][aux['primary-data'][j].repId].name)) {
-            labels.push(aux['sales-reps'][aux['primary-data'][j].repId].name)
-          }
+    // O(n^2) assumes max of six reps per team and max of 12Months historical data
+    while(i < _numEntities[0][chartView].length){
+      series[i] = [];
+      for (var j = 0; j < _numEntities.length; j++) {
+        series[i].push(_numEntities[j][chartView][i])
+        if (!labels.includes(aux.salesReps.entities[_numEntities[j].repId].name)) {
+          labels.push(aux.salesReps.entities[_numEntities[j].repId].name)
         }
       }
+      i++
     }
 
-    aux['chart-data']['series'] = series;
-    aux['chart-data']['labels'] = labels;
+    aux['chartData']['series'] = series;
+    aux['chartData']['labels'] = labels;
     this.setState(aux, this.updateChart)
   }
 
   updateChart(){
-    if(this.state['chart-data'].labels.length > 0 && this.state['chart-data'].series.length > 0){
-      var upperBound = 500;
-      this.state['chart-data'].series.forEach(function(list){
-        var max = Math.max.apply(null, list);
-        upperBound += max;
-      })
+    var upperBound = 500;
+    this.state.chartData.series.forEach(function(list){
+      var max = Math.max.apply(null, list);
+      upperBound += max;
+    })
 
-      new Chartist.Bar(this.chartContainer, {
-        labels: this.state['chart-data'].labels,
-        series: this.state['chart-data'].series
-      }, {
-        stackBars: true,
-        axisY: {
-          high:upperBound,
-          labelInterpolationFnc: function(value) {
-            return value;
-          }
+    new Chartist.Bar(this.chartContainer, {
+      labels: this.state.chartData.labels,
+      series: this.state.chartData.series
+    }, {
+      stackBars: true,
+      axisY: {
+        high:upperBound,
+        labelInterpolationFnc: function(value) {
+          return value;
         }
-      }).on('draw', function(data) {
-        if(data.type === 'bar') {
-          data.element.attr({
-            style: 'stroke-width: 30px'
-          });
-        }
-      });
-    }
+      }
+    }).on('draw', function(data) {
+      if(data.type === 'bar') {
+        data.element.attr({
+          style: 'stroke-width: 30px'
+        });
+      }
+    });
   }
 
+
   render( props ){
+
+    let loaderStyles = classNames('loading-indicator animated-background', this.state.activityNumbers.isFetching ? '' : 'end');
+
     return (
       <div>
         <figure className="chart-container" ref={node => this.chartContainer = node}>
-          <div className="loading-indicator animated-background">
+          <div className={ loaderStyles }>
             <div className="background-masker"></div>
             <div className="background-masker"></div>
             <div className="background-masker"></div>
@@ -99,15 +101,8 @@ class BarChart extends React.Component {
 }
 
 BarChart.propTypes =  {
-  'chart-view': PropTypes.string.isRequired,
-  'primary-data': PropTypes.array.isRequired,
-  'sales-reps': PropTypes.object.isRequired
+  'activityNumbers': PropTypes.object.isRequired,
+  'salesReps': PropTypes.object.isRequired
 }
-
-BarChart.defaultProps = {
-  'chart-view': '30D',
-  'primary-data':[],
-  'sales-reps':{}
-};
 
 export default BarChart;

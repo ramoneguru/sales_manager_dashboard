@@ -8,43 +8,60 @@ import Efficiency from './efficiency/app-efficiency';
 import Template from './app-template';
 import { fetchSalesReps, fetchActivityNumbers} from '../actions/app-actions';
 import rootReducer from '../reducers/app-reducers';
+import { hasStorage } from '../util/app-util';
+
 //import { createLogger } from 'redux-logger'
 //const loggerMiddleware = createLogger();
 
-const persistedState = {
-  SalesReps: {
-    repId: 85719830,
-    didInvalidate: false,
-    entities:{},
-    isFetching: false,
-    lastUpdated: 1494782944068
-  },
-  ActivityNumbers: {
-    repId: 85719830,
-    chartView:'30D',
-    didInvalidate: false,
-    entities: [],
-    isFetching: false,
-    lastUpdated: 1494782944068
+let store = null;
+let persistedState = null;
+let expiration = new Date().getTime() - (1 * 24 * 60 * 60 * 1000);
+
+
+let _createStore = (persistedState) => {
+  if(hasStorage() && persistedState) {
+    store = createStore(
+      rootReducer,
+      persistedState,
+      applyMiddleware(thunkMiddleware)
+    );
+  }else{
+    console.log('creating store with rootReducer')
+    store = createStore(
+      rootReducer,
+      applyMiddleware(thunkMiddleware)
+    );
   }
-};
+}
 
-const store = createStore(
-  rootReducer,
-  persistedState,
-  applyMiddleware(
-    thunkMiddleware
-  )
-);
+let refreshStore = () => {
+  Promise.all([
+    store.dispatch(fetchSalesReps(0)),
+    store.dispatch(fetchActivityNumbers(0))
+  ]).then(() => {
+    if(hasStorage()) {
+      localStorage.setItem('test', JSON.stringify(store.getState()))
+    }
+  });
+}
 
-//wait for all promises to resolve
-Promise.all([
-  store.dispatch(fetchSalesReps(persistedState.ActivityNumbers.repId)),
-  store.dispatch(fetchActivityNumbers(persistedState.ActivityNumbers.repId))
-]).then(() => {
-  console.log('App Initial State -> store.getState(): ', store.getState())
-});
 
+if(hasStorage()){
+  persistedState = JSON.parse(localStorage.getItem('test'))
+}
+
+if(persistedState){
+  if(persistedState.activityNumbers.lastUpdated > expiration){
+    console.log('state loaded from local storage is good no need to fetch')
+    _createStore(persistedState)
+  }else{
+    _createStore()
+    refreshStore()
+  }
+}else{
+  _createStore()
+  refreshStore()
+}
 
 export default () => {
   return (

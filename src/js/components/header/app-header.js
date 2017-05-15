@@ -15,17 +15,12 @@ class Header extends React.Component {
     }
     this.menuClickHandler = this.menuClickHandler.bind(this);
   }
-
-  updateMenu(e){
-    let menuState = this.state.menu;
-    console.log('app-header.js :: updateMenu :: local.state.menu: ' + menuState);
-  }
   
   menuClickHandler( e ){
     this.setState(function(prevState){
       let active = ( prevState.menu === 0 ) ? 1 : 0;
       return { menu: active }
-    }, this.updateMenu(e) );
+    });
   }
 
   render( ){

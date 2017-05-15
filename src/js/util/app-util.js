@@ -1,3 +1,5 @@
+import AppConstants from '../constants/app-constants';
+
 const debounce = (func, wait) => {
   var timeout;
   return function() {
@@ -13,4 +15,15 @@ const debounce = (func, wait) => {
   };
 }
 
-export default debounce;
+const hasStorage = () => {
+  var test = 'test';
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch(e) {
+    return false;
+  }
+};
+
+export { debounce, hasStorage };

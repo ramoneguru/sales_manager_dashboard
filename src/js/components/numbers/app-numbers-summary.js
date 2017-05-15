@@ -6,15 +6,15 @@ import SummaryItem from './app-numbers-summary-item';
  */
 const NumbersSummary = (props) => {
 
-  let summaryItems = Object.keys(props['sales-reps']).map( key => {
+  let summaryItems = Object.keys(props.salesReps).map( key => {
 
-    let data = props['primary-data'].filter(function(entity){
+    let data = props.activityNumbers.filter(function(entity){
       return parseInt(entity.repId) === parseInt(key);
     });
 
-    return <SummaryItem key={ key } name={ props['sales-reps'][key].name } data={data} avatar={ props['sales-reps'][key].avatar } />
+    return <SummaryItem key={ key } name={ props.salesReps[key].name } data={data} avatar={ props.salesReps[key].avatar } />
   });
-
+  
   return (
     <div className="rep_summary">
       <div className="rep_summary--header">
@@ -29,4 +29,10 @@ const NumbersSummary = (props) => {
     </div>
   )
 }
+
+NumbersSummary.defaultProps = {
+  'activityNumbers': [],
+  'salesReps':{}
+};
+
 export default NumbersSummary;
