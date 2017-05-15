@@ -70,7 +70,7 @@ class Numbers extends React.Component {
             <div className="content">
               <NumbersSummary activityNumbers={ this.state.activityNumbers.entities } salesReps={ this.state.salesReps.entities } />
             </div>
-            <div className="sidebar">sidebar</div>
+            <div className="sidebar">&nbsp;</div>
           </div>
         </section>
       </div>
