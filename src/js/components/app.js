@@ -26,7 +26,6 @@ let _createStore = (persistedState) => {
       applyMiddleware(thunkMiddleware)
     );
   }else{
-    console.log('creating store with rootReducer')
     store = createStore(
       rootReducer,
       applyMiddleware(thunkMiddleware)
@@ -40,19 +39,28 @@ let refreshStore = () => {
     store.dispatch(fetchActivityNumbers(0))
   ]).then(() => {
     if(hasStorage()) {
-      localStorage.setItem('test', JSON.stringify(store.getState()))
+      let _state = store.getState();
+      localStorage.setItem('ActivityNumbers', JSON.stringify(_state.ActivityNumbers))
+      localStorage.setItem('SalesReps', JSON.stringify(_state.SalesReps))
     }
   });
 }
 
 
 if(hasStorage()){
-  persistedState = JSON.parse(localStorage.getItem('test'))
+  let pActivityNumbers = localStorage.getItem('ActivityNumbers')
+  let pSalesReps = localStorage.getItem('SalesReps')
+
+  if(pActivityNumbers && pSalesReps){
+    persistedState = {
+      ActivityNumbers: JSON.parse(pActivityNumbers),
+      SalesReps: JSON.parse(pSalesReps)
+    };
+  }
 }
 
 if(persistedState){
-  if(persistedState.activityNumbers.lastUpdated > expiration){
-    console.log('state loaded from local storage is good no need to fetch')
+  if(persistedState.ActivityNumbers.lastUpdated > expiration){
     _createStore(persistedState)
   }else{
     _createStore()

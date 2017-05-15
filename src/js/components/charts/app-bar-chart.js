@@ -15,19 +15,27 @@ class BarChart extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    this.renderChart(props);
+  }
+
+  componentDidMount(){
+    this.renderChart();
+  }
+
+  renderChart(_props){
+    let props = _props || this.props;
+
     if (props.activityNumbers.isFetching || props.salesReps.isFetching) return;
 
     let aux = Object.assign({}, props,{
-      'chartData':{ labels: [], series: []}
-    }),
-
-    chartView = aux['chartView'],
-    series = [],
-    labels = [],
-    i = 0,
-    _numEntities = aux.activityNumbers.entities;
-
-    // O(n^2) assumes max of six reps per team and max of 12Months historical data
+        'chartData':{ labels: [], series: []}
+      }),
+      chartView = aux['chartView'],
+      series = [],
+      labels = [],
+      i = 0,
+      _numEntities = aux.activityNumbers.entities;
+    
     while(i < _numEntities[0][chartView].length){
       series[i] = [];
       for (var j = 0; j < _numEntities.length; j++) {

@@ -1,13 +1,12 @@
 import React from 'react';
 import SummaryItem from './app-numbers-summary-item';
+import PropTypes from 'prop-types';
 
 /**
  * Represents stateless list of sales team details
  */
 const NumbersSummary = (props) => {
-
   let summaryItems = Object.keys(props.salesReps).map( key => {
-
     let data = props.activityNumbers.filter(function(entity){
       return parseInt(entity.repId) === parseInt(key);
     });
@@ -28,6 +27,11 @@ const NumbersSummary = (props) => {
       {summaryItems}
     </div>
   )
+}
+
+NumbersSummary.propTypes =  {
+  'activityNumbers': PropTypes.array.isRequired,
+  'salesReps': PropTypes.object.isRequired
 }
 
 NumbersSummary.defaultProps = {
