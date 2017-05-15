@@ -1,30 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Router } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Button from  './app-header-button';
 import classNames from 'classnames';
+import { withRouter } from 'react-router'
 
-/**
- * Represents App Header, Nav and Overlay
- */
 class Header extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      menu: 0
-    }
-    this.menuClickHandler = this.menuClickHandler.bind(this);
+    this.menuClickHandler = this.menuClickHandler.bind(this)
+    this.updateMenu = this.updateMenu.bind(this)
+
+    props.history.listen(()=>{
+      this.updateMenu()
+    })
   }
-  
+
+  componentWillMount(){
+    this.setState({menu: 0})
+  }
+
   menuClickHandler( e ){
+    this.updateMenu()
+  }
+
+  updateMenu(){
     this.setState(function(prevState){
       let active = ( prevState.menu === 0 ) ? 1 : 0;
       return { menu: active }
-    });
+    } )
   }
 
   render( ){
-    let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '');
+    let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '')
     
     return (
       <header className='header'>
@@ -40,4 +49,5 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+//export default Header;
+export default withRouter(Header);

@@ -5,7 +5,7 @@ import NumbersSummary from './app-numbers-summary';
 import BarChart from '../charts/app-bar-chart';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     activityNumbers: state.ActivityNumbers,
     salesReps:state.SalesReps,
