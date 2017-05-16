@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import AppConstants from '../constants/app-constants';
 
+
 //Action Creators
 const invalidateActivityNumbers = (repId) => {
   return {
@@ -70,4 +71,4 @@ const fetchSalesReps = (repId) => {
 }
 
 
-export { fetchSalesReps, fetchActivityNumbers }
+export { invalidateActivityNumbers, fetchSalesReps, fetchActivityNumbers }

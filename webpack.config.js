@@ -13,7 +13,11 @@ module.exports = {
     filename: 'bundle.[hash].js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    hot: true,
+    inline: true,
+    port: 8080,
+    historyApiFallback: true
   },
   devtool: isDev ?  'source-map': 'eval',
   module: {
@@ -75,7 +79,6 @@ module.exports = {
       "writeToFileEmit":false,
       "short_name":"Sales Activity App",
       "name": "HackerWeb",
-      "short_name": "SalesActivityApp",
       "start_url": ".",
       "display": "standalone",
       "background_color": "#fff",
