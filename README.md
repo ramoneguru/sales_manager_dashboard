@@ -9,6 +9,7 @@ Implementation:
  - Async networking with promises
  - Local Storage
  - @TODO Firebase Integration
+ - @TODO Evaluate Jest w/Enzyme vs. Mocha w/Enzyme for unit tests
 
 
 Screencast:https://www.screencast.com/t/xuRcR0Mwwy
