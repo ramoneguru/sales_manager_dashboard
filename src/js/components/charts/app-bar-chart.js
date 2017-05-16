@@ -53,6 +53,7 @@ class BarChart extends React.Component {
   }
 
   updateChart(){
+ 
     var upperBound = 500;
     this.state.chartData.series.forEach(function(list){
       var max = Math.max.apply(null, list);
@@ -80,28 +81,27 @@ class BarChart extends React.Component {
   }
 
 
-  render( props ){
+  render(){
 
-    let loaderStyles = classNames('loading-indicator animated-background', this.state.activityNumbers.isFetching ? '' : 'end');
+    let indicatorStyles = classNames('loading-indicator animated-background', this.state.activityNumbers.isFetching ? '' : 'end');
+
+    const loadIndicator = this.props.indicators.map((indicator) =>
+      <div className="background-masker" key={indicator}></div>
+    );
+
+    const chartKeys = this.props.chartKeys.map((key) => {
+      return <li key={key}><i className={key.toLowerCase()}></i> {key}</li>
+    });
 
     return (
       <div>
         <figure className="chart-container" ref={node => this.chartContainer = node}>
-          <div className={ loaderStyles }>
-            <div className="background-masker"></div>
-            <div className="background-masker"></div>
-            <div className="background-masker"></div>
-            <div className="background-masker"></div>
-            <div className="background-masker"></div>
-            <div className="background-masker"></div>
-            <div className="background-masker"></div>
+          <div className={ indicatorStyles }>
+            {loadIndicator}
           </div>
         </figure>
         <ul className="chart-key">
-          <li><i className="call"></i> Call</li>
-          <li><i className="email"></i> Prosp. Email</li>
-          <li><i className="deal"></i> Deal</li>
-          <li><i className="stage2"></i> Stage 2</li>
+          {chartKeys}
         </ul>
       </div>
     );
@@ -111,6 +111,11 @@ class BarChart extends React.Component {
 BarChart.propTypes =  {
   'activityNumbers': PropTypes.object.isRequired,
   'salesReps': PropTypes.object.isRequired
+}
+
+BarChart.defaultProps = {
+  indicators: [1, 2, 3, 4, 5, 6, 7],
+  chartKeys: ['Call', 'Email', 'Deal', 'Stage2']
 }
 
 export default BarChart;
