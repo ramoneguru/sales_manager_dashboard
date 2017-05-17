@@ -1,6 +1,7 @@
 @import "~susy/sass/susy";
 @import "./app-effiency-chart";
 @import '../color';
+@import '../animation';
 
 /**
  * The efficiency page layout is fluid with two primary states: mobile and desktop
@@ -10,12 +11,55 @@
  *
  */
 
-.numbers-header {
+.efficiency-header {
   display: flex;
   flex-direction: row;
 
   .page-title {
     flex-grow: 1;
   }
+}
 
+.efficiency-report{
+  margin:4em 0;
+  display:flex;
+  flex-direction:column;
+
+  .efficiency-report__header,
+  .efficiency-report__item {
+    display:flex;
+    flex-direction:row;
+    margin: 2em 0;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    text-align:left;
+
+    strong{
+      flex:1;
+      font-size:1.5em;
+    }
+
+    span{
+      flex:1;
+      font-size:1.25em;
+    }
+
+  }
+
+  .efficiency-report__button {
+    flex:1;
+    font-family:$primary-sans-serif-stack;
+    font-size:1.5em;
+    background-color: $blue;
+    color: $primary-white;
+    border: 0px none;
+    border-radius: 0.5em;
+    padding: 0.75em 1em;
+    outline:none;
+
+    &:disabled{
+      background-color:$secondary-grey;
+      @extend .fade-out;
+    }
+  }
 }

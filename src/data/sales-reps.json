@@ -3,27 +3,87 @@
     "entities":{
       "85719831": {
         "name": "Marie Curie",
-        "avatar":"85719831.jpeg"
+        "avatar":"85719831.jpeg",
+        "report":{
+          "dials":3844,
+          "connects":333,
+          "opps":11,
+          "deals":1,
+          "dialConnectRatio":[12,1],
+          "dialOppRatio":[349,1],
+          "oppDealRatio":[11,1],
+          "dialDealRatio":[3844,1]
+        }
       },
       "85719832": {
         "name": "Max Planck",
-        "avatar":"85719832.jpeg"
+        "avatar":"85719832.jpeg",
+        "report":{
+          "dials":4285,
+          "connects":339,
+          "opps":15,
+          "deals":2,
+          "dialConnectRatio":[13,1],
+          "dialOppRatio":[286,1],
+          "oppDealRatio":[8,1],
+          "dialDealRatio":[2143,1]
+        }
       },
       "85719833": {
         "name": "Louis Pasteur",
-        "avatar":"85719833.jpeg"
+        "avatar":"85719833.jpeg",
+        "report":{
+          "dials":2911,
+          "connects":251,
+          "opps":27,
+          "deals":4,
+          "dialConnectRatio":[12,1],
+          "dialOppRatio":[108,1],
+          "oppDealRatio":[7,1],
+          "dialDealRatio":[728,1]
+        }
       },
       "85719834": {
         "name": "Niels Bohr",
-        "avatar":"85719834.jpeg"
+        "avatar":"85719834.jpeg",
+        "report":{
+          "dials":3973,
+          "connects":342,
+          "opps":20,
+          "deals":6,
+          "dialConnectRatio":[12,1],
+          "dialOppRatio":[199,1],
+          "oppDealRatio":[3,1],
+          "dialDealRatio":[662,1]
+        }
       },
       "85719835": {
         "name": "Galileo Galilei",
-        "avatar":"85719835.jpeg"
+        "avatar":"85719835.jpeg",
+        "report":{
+          "dials":2912,
+          "connects":275,
+          "opps":9,
+          "deals":2,
+          "dialConnectRatio":[11,1],
+          "dialOppRatio":[327,1],
+          "oppDealRatio":[9,1],
+          "dialDealRatio":[362,1]
+        }
       },
       "85719836": {
         "name": "Joseph Thomson",
-        "avatar":"85719836.jpeg"
+        "avatar":"85719836.jpeg",
+        "report":{
+          "dials":4110,
+          "connects":287,
+          "opps":13,
+          "deals":3,
+          "dialConnectRatio":[12,1],
+          "dialOppRatio":[471,1],
+          "oppDealRatio":[10,1],
+          "dialDealRatio":[454,1]
+        }
       }
     }
   }

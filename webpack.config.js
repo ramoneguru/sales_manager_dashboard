@@ -1,3 +1,4 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
@@ -12,14 +13,11 @@ module.exports = {
     path:resolve(__dirname, 'dist'),
     filename: 'bundle.[hash].js'
   },
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-    inline: true,
-    port: 8080,
-    historyApiFallback: true
-  },
-  devtool: isDev ?  'source-map': 'eval',
+  // resolve: {
+  //   modules: [
+  //     __dirname
+  //   ]
+  // },
   module: {
     rules: [
       {
@@ -58,6 +56,14 @@ module.exports = {
 
     ]
   },
+  devServer: {
+    contentBase: './dist',
+    hot: true,
+    inline: true,
+    port: 8080,
+    historyApiFallback: true
+  },
+  devtool: isDev ?  'source-map': 'eval',
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
@@ -83,6 +89,9 @@ module.exports = {
       "display": "standalone",
       "background_color": "#fff",
       "description": "Activity Performance Metrics For Sales Teams."
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
     })
   ]
 }

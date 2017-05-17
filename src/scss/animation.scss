@@ -16,6 +16,16 @@
   }
 }
 
+@keyframes fadeout{
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .animated-background {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -39,4 +49,17 @@
 .end{
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
+}
+
+.fade-out {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-name: fadeout;
+  animation-name: fadeout;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
