@@ -63,7 +63,7 @@ body{
         @extend .end;
       }
 
-      &__background-masker {
+      .load-indicator__background-masker {
         display:flex;
         flex:1;
         max-width:2em;

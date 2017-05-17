@@ -1,0 +1,35 @@
+{
+  "main.css": "bundle.2e91d5d6e3e9cd2fc61a.css",
+  "main.js": "bundle.2e91d5d6e3e9cd2fc61a.js",
+  "name": "Sales Activity Dashboard App",
+  "short_name": "SalesActivity",
+  "start_url": ".",
+  "background_color": "#fff",
+  "theme_color": "#67dbcb",
+
+  "icons": [{
+    "src": "images/touch/homescreen48.png",
+    "sizes": "48x48",
+    "type": "image/png"
+  }, {
+    "src": "images/touch/homescreen72.png",
+    "sizes": "72x72",
+    "type": "image/png"
+  }, {
+    "src": "images/touch/homescreen96.png",
+    "sizes": "96x96",
+    "type": "image/png"
+  }, {
+    "src": "images/touch/homescreen144.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }, {
+    "src": "images/touch/homescreen168.png",
+    "sizes": "168x168",
+    "type": "image/png"
+  }, {
+    "src": "images/touch/homescreen192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }],
+}
