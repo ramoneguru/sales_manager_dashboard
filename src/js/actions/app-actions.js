@@ -1,8 +1,13 @@
+/**
+ *  Represents Redux Action Creators
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ */
+
 import fetch from 'isomorphic-fetch';
 import AppConstants from '../constants/app-constants';
 
-
-//Action Creators
 const invalidateActivityNumbers = (repId) => {
   return {
     type: AppConstants.INVALIDATE_ACTIVITY_NUMBERS,

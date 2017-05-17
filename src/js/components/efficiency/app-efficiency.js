@@ -1,3 +1,11 @@
+/**
+ *  Class representing a Sales Teams Activity Efficiency Ratios.
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @exports Efficiency Class
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import LineChart from '../charts/app-line-chart';
@@ -9,9 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     salesReps:state.SalesReps
   }
 }
-/**
- * Represents a sales team's activity efficiency
- */
+
 class Efficiency extends React.Component {
 
   constructor(props) {

@@ -1,3 +1,12 @@
+/**
+ *  Class representing a App Header.
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @desc  Maintains Global Nav Menu State / (HOC) WithRouter
+ * @exports Header Class
+ */
+
 import React from 'react';
 import { Link, Router } from 'react-router-dom';
 import { connect } from 'react-redux';

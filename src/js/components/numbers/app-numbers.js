@@ -1,9 +1,16 @@
+/**
+ *  Class representing a Sales Teams Activity Numbers.
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @exports Numbers Class
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NumbersSummary from './app-numbers-summary';
 import BarChart from '../charts/app-bar-chart';
-
 
 const mapStateToProps = (state, ownProps) => {
   return {

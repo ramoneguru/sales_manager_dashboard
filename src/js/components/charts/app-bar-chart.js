@@ -1,3 +1,12 @@
+/**
+ *  Class representing a Bar Chart.
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @param props
+ * @exports BarChart Class
+ */
+
 import React from 'react';
 import Chartist from 'chartist-webpack';
 import PropTypes from 'prop-types';
@@ -22,6 +31,11 @@ class BarChart extends React.Component {
     this.renderChart();
   }
 
+  /**
+   * Responsible for formatting numbers data for Chartist BarChart consumption
+   * @param _props
+   * @desc O(n^2) assumes max sales team size of 6 reps and 12 month historic data
+   */
   renderChart(_props){
     let props = _props || this.props;
 
@@ -79,7 +93,6 @@ class BarChart extends React.Component {
       }
     });
   }
-
 
   render(){
 

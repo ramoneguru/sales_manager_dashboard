@@ -1,12 +1,15 @@
+/**
+ *  Represents Stateless Header Button (Hamburger Icon)
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @param props
+ * @exports Button Constructor
+ */
+
 import React from 'react';
 import classNames from 'classnames';
 
-/**
- * Represents App Header Nav Menu Button
- * @param props
- * @returns {XML}
- * @constructor
- */
 const Button = (props) => {
   var styles = classNames('button', props.active === 1 ? 'active' : '');
 

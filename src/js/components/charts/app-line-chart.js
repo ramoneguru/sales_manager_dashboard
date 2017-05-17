@@ -1,3 +1,12 @@
+/**
+ *  Class representing a Line Chart.
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @param props
+ * @exports LineChart Class
+ */
+
 import React from 'react';
 import moment from 'moment';
 import Chartist from 'chartist-webpack';
@@ -22,6 +31,11 @@ class LineChart extends React.Component {
     this.renderChart();
   }
 
+  /**
+   * Responsible for formatting data for Chartist LineChart consumption
+   * @param _props
+   * @desc O(n^2) assumes max sales team size of 6 reps and 12 month historic data
+   */
   renderChart(_props){
     let props = _props || this.props;
 

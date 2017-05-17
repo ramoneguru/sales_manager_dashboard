@@ -1,4 +1,9 @@
-//Actions
+/**
+ *  Represents App Constants
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ */
 export default {
   HOST: window.location.href.split('/')[2],
   PROTOCOL: location.protocol,

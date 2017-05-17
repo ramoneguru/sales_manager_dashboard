@@ -1,3 +1,10 @@
+/**
+ *  Represents Redux ActivityNumbers Action Reducer
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ */
+
 import AppConstants from '../constants/app-constants';
 
 const ActivityNumbers = (state = {

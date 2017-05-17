@@ -1,10 +1,17 @@
+/**
+ *  Represents Stateless Sales Team Summary List
+ *  Sales Rep. Name, Profile Image, Connect Rate %
+ *
+ * @author Drew Robinson (hello@drewrobinson.com)
+ * @version 0.0.1
+ * @param props
+ * @exports NumbersSummary Class
+ */
+
 import React from 'react';
 import SummaryItem from './app-numbers-summary-item';
 import PropTypes from 'prop-types';
 
-/**
- * Represents stateless list of sales team details
- */
 const NumbersSummary = (props) => {
   let summaryItems = Object.keys(props.salesReps).map( key => {
     let data = props.activityNumbers.filter(function(entity){
