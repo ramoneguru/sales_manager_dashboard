@@ -36,12 +36,22 @@
 
     strong{
       flex:1;
-      font-size:1.5em;
+      font-size:1em;
     }
 
     span{
       flex:1;
-      font-size:1.25em;
+      font-size:1em;
+    }
+
+    @include susy-breakpoint($bp-medium) {
+      strong{
+        font-size:1.5em;
+      }
+
+      span{
+        font-size:1.25em;
+      }
     }
 
   }
