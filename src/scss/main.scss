@@ -1,8 +1,10 @@
 /*
- * Copyright (c) 2016 - 2017 Drew Robinson <hello@drewrobinson.com>
- *
  * Stylesheets for Sales Manager Dashboard App
  *
+ * 1) Rules are to written for mobile first
+ * 2) Rules should adhere to the Block__Element--Modifier convention
+ *
+ * Copyright (c) 2016 - 2017 Drew Robinson <hello@drewrobinson.com>
  */
 @import "~susy/sass/susy";
 @import "./breakpoints";
