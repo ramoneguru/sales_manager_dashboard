@@ -6,7 +6,7 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Numbers from './numbers/app-numbers';
 import Efficiency from './efficiency/app-efficiency';
 import Template from './app-template';
-import { fetchSalesReps, fetchActivityNumbers} from '../actions/app-actions';
+import { fetchSalesReps, fetchActivityNumbers, fetchActivityEfficiency} from '../actions/app-actions';
 import rootReducer from '../reducers/app-reducers';
 import { hasStorage } from '../util/app-util';
 
@@ -36,29 +36,34 @@ let _createStore = (persistedState) => {
 let refreshStore = () => {
   Promise.all([
     store.dispatch(fetchSalesReps(0)),
-    store.dispatch(fetchActivityNumbers(0))
+    store.dispatch(fetchActivityNumbers(0)),
+    store.dispatch(fetchActivityEfficiency(0))
   ]).then(() => {
-    if(hasStorage()) {
-      let _state = store.getState();
-      localStorage.setItem('ActivityNumbers', JSON.stringify(_state.ActivityNumbers))
-      localStorage.setItem('SalesReps', JSON.stringify(_state.SalesReps))
-    }
+    // if(hasStorage()) {
+    //   let _state = store.getState();
+    //   localStorage.setItem('ActivityNumbers', JSON.stringify(_state.ActivityNumbers))
+    //   localStorage.setItem('ActivityEfficiency', JSON.stringify(_state.ActivityEfficiency))
+    //   localStorage.setItem('SalesReps', JSON.stringify(_state.SalesReps))
+    // }
   });
 }
 
 
 if(hasStorage()){
   let pActivityNumbers = localStorage.getItem('ActivityNumbers')
+  let pActivityEfficiency = localStorage.getItem('ActivityEfficiency')
   let pSalesReps = localStorage.getItem('SalesReps')
 
-  if(pActivityNumbers && pSalesReps){
+  if(pActivityNumbers && pActivityEfficiency && pSalesReps){
     persistedState = {
       ActivityNumbers: JSON.parse(pActivityNumbers),
+      ActivityEfficiency: JSON.parse(pActivityEfficiency),
       SalesReps: JSON.parse(pSalesReps)
     };
   }
 }
 
+//@TODO consider refactoring to allow each payload to persist for unique durations
 if(persistedState){
   if(persistedState.ActivityNumbers.lastUpdated > expiration){
     _createStore(persistedState)

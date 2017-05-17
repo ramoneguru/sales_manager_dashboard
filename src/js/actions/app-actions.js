@@ -70,5 +70,40 @@ const fetchSalesReps = (repId) => {
   }
 }
 
+const invalidateActivityEfficiency = (repId) => {
+  return {
+    type: AppConstants.INVALIDATE_ACTIVITY_EFFICIENCY,
+    repId
+  }
+}
 
-export { invalidateActivityNumbers, fetchSalesReps, fetchActivityNumbers }
+const requestActivityEfficiency = (repId) => {
+  return {
+    type: AppConstants.REQUEST_ACTIVITY_EFFICIENCY,
+    repId
+  }
+}
+
+const receiveActivityEfficiency = (repId, json) => {
+  return {
+    type: AppConstants.RECEIVE_ACTIVTY_EFFICIENCY,
+    repId,
+    entities: json.data.entities,
+    receivedAt: Date.now()
+  }
+}
+
+const fetchActivityEfficiency = (repId) => {
+  return function (dispatch) {
+    dispatch(requestActivityEfficiency(repId))
+    return fetch(`${AppConstants.PROTOCOL}//${AppConstants.HOST}/data/efficiency.json?${repId}`)
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveActivityEfficiency(repId, json))
+      )
+      .catch(function(reason) {
+        throw new Error('Network Error: ' + reason)
+      });
+  }
+}
+export { invalidateActivityNumbers, fetchSalesReps, fetchActivityNumbers, fetchActivityEfficiency }

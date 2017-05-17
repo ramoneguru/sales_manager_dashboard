@@ -16,7 +16,7 @@ const SummaryItem = (props) => {
     rate = perc * 100;
   }
   return (
-    <div className="rep_summary--item">
+    <div className="rep-summary__item">
         <figure>
           <span><img src={src} /></span>
           <figcaption>{props.name}</figcaption>

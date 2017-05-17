@@ -1,0 +1,49 @@
+@import '../../../node_modules/chartist-webpack/dist/scss/chartist.scss';
+@import '../animation';
+@import '../color';
+
+
+/**
+ * Number chart styles represent the chart, chart key and loading indicator
+ */
+.chart-container--barchart{
+
+  .ct-chart-bar .ct-series-a .ct-bar{
+    stroke: $orange;
+  }
+
+  .ct-chart-bar .ct-series-b .ct-bar{
+    stroke: $yellow;
+  }
+
+  .ct-chart-bar .ct-series-c .ct-bar{
+    stroke: $turquoise;
+  }
+
+  .ct-chart-bar .ct-series-d .ct-bar{
+    stroke: $blue;
+  }
+
+}
+
+
+/* Chart Key */
+ul.chart-key--barchart{
+
+  .call{
+    background-color:$orange;
+  }
+
+  .email{
+    background-color:$yellow;
+  }
+
+  .deal{
+    background-color:$turquoise;
+  }
+
+  .stage2{
+    background-color:$blue;
+  }
+
+}

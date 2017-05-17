@@ -1,0 +1,42 @@
+@import '../../../node_modules/chartist-webpack/dist/scss/chartist.scss';
+@import '../animation';
+@import '../color';
+
+/**
+ * Number chart styles represent the chart, chart key and loading indicator
+ */
+
+.chart-container--linechart{
+
+  .ct-series-a .ct-point,
+  .ct-series-a .ct-line {
+    stroke: $blue;
+  }
+
+  .ct-series-b .ct-point,
+  .ct-series-b .ct-line{
+    stroke: $turquoise;
+  }
+
+  .ct-series-c .ct-point,
+  .ct-series-c .ct-line {
+    stroke: $green;
+  }
+}
+
+/* Chart Key */
+ul.chart-key--linechart {
+
+  .call{
+    background-color:$blue;
+  }
+
+  .connect{
+    background-color:$turquoise;
+  }
+
+  .meeting{
+    background-color:$green;
+  }
+
+}

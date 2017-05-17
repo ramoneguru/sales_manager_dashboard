@@ -1,11 +1,54 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import LineChart from '../charts/app-line-chart';
+import PropTypes from 'prop-types';
 
-const Efficiency = ( props ) => {
-  return (
-    <div>
-      <h1>Activity Efficiency</h1>
-    </div>
-  )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    activityEfficiency: state.ActivityEfficiency,
+    salesReps:state.SalesReps
+  }
+}
+/**
+ * Represents a sales team's activity efficiency
+ */
+class Efficiency extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillMount() {
+    this.propsChangeHandler()
+  }
+
+  componentWillReceiveProps(props) {
+    this.propsChangeHandler(props)
+  }
+
+  propsChangeHandler(_props){
+    const props = _props || this.props;
+    this.setState({
+      activityEfficiency:props.activityEfficiency,
+      salesReps:props.salesReps
+    });
+  }
+
+  render(){
+    return (
+      <div>
+        <header className="efficiency-header">
+          <h1 className="page-title">Activity Efficiency</h1>
+        </header>
+        <LineChart activityEfficiency={ this.state.activityEfficiency} salesReps={ this.state.salesReps }></LineChart>
+      </div>
+    )
+  }
 }
 
-export default Efficiency;
+Efficiency.propTypes =  {
+  'activityEfficiency': PropTypes.object.isRequired,
+  'salesReps': PropTypes.object.isRequired
+}
+
+export default connect(mapStateToProps)(Efficiency);

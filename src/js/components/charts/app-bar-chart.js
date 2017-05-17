@@ -83,10 +83,10 @@ class BarChart extends React.Component {
 
   render(){
 
-    let indicatorStyles = classNames('loading-indicator animated-background', this.state.activityNumbers.isFetching ? '' : 'end');
+    let indicatorStyles = classNames('load-indicator animated-background', this.state.activityNumbers.isFetching ? '' : 'end');
 
     const loadIndicator = this.props.indicators.map((indicator) =>
-      <div className="background-masker" key={indicator}></div>
+      <div className="load-indicator__background-masker" key={indicator}></div>
     );
 
     const chartKeys = this.props.chartKeys.map((key) => {
@@ -95,12 +95,12 @@ class BarChart extends React.Component {
 
     return (
       <div>
-        <figure className="chart-container" ref={node => this.chartContainer = node}>
+        <figure className="chart-container chart-container--barchart" ref={node => this.chartContainer = node}>
           <div className={ indicatorStyles }>
             {loadIndicator}
           </div>
         </figure>
-        <ul className="chart-key">
+        <ul className="chart-key chart-key--barchart">
           {chartKeys}
         </ul>
       </div>

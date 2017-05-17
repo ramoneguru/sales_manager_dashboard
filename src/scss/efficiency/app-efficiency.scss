@@ -1,0 +1,21 @@
+@import "~susy/sass/susy";
+@import "./app-effiency-chart";
+@import '../color';
+
+/**
+ * The efficiency page layout is fluid with two primary states: mobile and desktop
+ *
+ * 1) Rules are to written for mobile first
+ * 2) Rules should adhere to the Block__Element--Modifier convention
+ *
+ */
+
+.numbers-header {
+  display: flex;
+  flex-direction: row;
+
+  .page-title {
+    flex-grow: 1;
+  }
+
+}

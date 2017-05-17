@@ -15,8 +15,8 @@ const NumbersSummary = (props) => {
   });
   
   return (
-    <div className="rep_summary">
-      <div className="rep_summary--header">
+    <div className="rep-summary">
+      <div className="rep-summary__header">
         <div>
           <h3>Sales Rep.</h3>
         </div>

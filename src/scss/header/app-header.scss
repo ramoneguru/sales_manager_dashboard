@@ -1,3 +1,13 @@
+@import './app-header-button';
+
+/**
+ * The application header style rules represent the header, overlay, and global navigation links
+ *
+ * 1) Rules are to written for mobile first
+ * 2) Rules should adhere to the Block-Element--Modifier convention
+ *
+ */
+
 .header {
   background-color: $secondary-white;
   min-height: 5em;
