@@ -39,12 +39,12 @@ let refreshStore = () => {
     store.dispatch(fetchActivityNumbers(0)),
     store.dispatch(fetchActivityEfficiency(0))
   ]).then(() => {
-    // if(hasStorage()) {
-    //   let _state = store.getState();
-    //   localStorage.setItem('ActivityNumbers', JSON.stringify(_state.ActivityNumbers))
-    //   localStorage.setItem('ActivityEfficiency', JSON.stringify(_state.ActivityEfficiency))
-    //   localStorage.setItem('SalesReps', JSON.stringify(_state.SalesReps))
-    // }
+    if(hasStorage()) {
+      let _state = store.getState();
+      localStorage.setItem('ActivityNumbers', JSON.stringify(_state.ActivityNumbers))
+      localStorage.setItem('ActivityEfficiency', JSON.stringify(_state.ActivityEfficiency))
+      localStorage.setItem('SalesReps', JSON.stringify(_state.SalesReps))
+    }
   });
 }
 
