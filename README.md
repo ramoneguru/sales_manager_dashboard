@@ -8,6 +8,7 @@ Implementation:
  - Redux
  - Async networking with promises
  - Local Storage
+ - Code Splitting
  - App can load on offline/flaky connections
     - Registers a Service Worker
     - Responds with a 200 when offline
