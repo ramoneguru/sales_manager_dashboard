@@ -89,11 +89,9 @@ module.exports = {
       "display": "standalone",
       "background_color": "#fff",
       "description": "Activity Performance Metrics For Sales Teams."
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static'
     })
   ]
 }
 
 //mocha --compilers js:babel-core/register --require babel-polyfill
+//,new BundleAnalyzerPlugin({analyzerMode: 'static'})

@@ -49,7 +49,7 @@ class Efficiency extends React.Component {
       this.setState({
         reportEnabled: true
       },()=>{
-        System.import('./app-efficiency-report').then(EfficiencyReport => {
+        import('./app-efficiency-report').then(EfficiencyReport => {
           this.EfficiencyReport = EfficiencyReport
           this.forceUpdate()
         })

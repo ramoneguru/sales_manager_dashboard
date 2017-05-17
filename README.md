@@ -29,3 +29,5 @@ Implementation:
 Screencast: https://www.screencast.com/t/j42B7MXxc
 
 Prototype URL: https://sales-manager-dashboard.firebaseapp.com/#/
+
+Lighthouse Rating: 99/100
