@@ -6,10 +6,13 @@ Env:
 - Node (v6.10.2)
 - NPM (4.50)
 
-Install:
+Install Dev:
 - npm install
 - npm run start-dev
 - dev-url: http://localhost:8080/
+
+Production Build:
+- npm run build
 
 Implementation:
  - ReactJS/ES6
