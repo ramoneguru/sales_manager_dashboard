@@ -28,6 +28,7 @@ body{
   height: 100vh;
   display: flex;
   flex-flow: column;
+  min-width: 410px;
   background-color: $primary-white;
 
   & > header, & > section, & > footer {

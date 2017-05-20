@@ -6,6 +6,7 @@
   "start_url": ".",
   "background_color": "#fff",
   "theme_color": "#67dbcb",
+  "display": "standalone",
 
   "icons": [{
     "src": "images/touch/homescreen48.png",
