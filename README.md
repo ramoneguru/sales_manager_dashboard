@@ -10,6 +10,7 @@ Install Dev:
 - npm install
 - npm run start-dev
 - dev-url: http://localhost:8080/
+- !!Note: App.js [ln:17] isDev {bool} disables data peristance for localhost:8080
 
 Production Build:
 - npm run build
