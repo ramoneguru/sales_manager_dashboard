@@ -8,7 +8,7 @@ Env:
 
 Install:
 - npm install
-- npm start-dev
+- npm run start-dev
 - dev-url: http://localhost:8080/
 
 Implementation:
