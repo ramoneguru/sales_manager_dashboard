@@ -7,6 +7,13 @@
 
 import Constants from '../constants/constants';
 
+/**
+ * Responsible for determining state in redux store for activity efficiency
+ * @param state
+ * @param action
+ * @returns {*}
+ * @constructor
+ */
 const ActivityEfficiency = (state = {
   didInvalidate : false,
   isFetching    : true,

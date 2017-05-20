@@ -1,5 +1,4 @@
 /**
- *  Class representing a Sales Teams Activity Efficiency.
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -12,6 +11,12 @@ import { connect } from 'react-redux';
 import LineChart from '../charts/LineChart';
 import PropTypes from 'prop-types';
 
+/**
+ * 
+ * @param state
+ * @param ownProps
+ * @returns {{activityEfficiency: *, salesReps: *, reportEnabled: (boolean|*|shim)}}
+ */
 const mapStateToProps = (state, ownProps) => {
   return {
     activityEfficiency : state.ActivityEfficiency,
@@ -20,21 +25,39 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+/**
+ * Represents a sales team's activity efficiency
+ */
 class Efficiency extends React.Component {
 
+  /**
+   * Binds reportButtonClickHandler method to context of instance
+   * @param props
+   */
   constructor(props) {
     super(props);
     this.reportButtonClickHandler = this.reportButtonClickHandler.bind(this);
   }
 
+  /**
+   * Invokes propsChangeHandler
+   */
   componentWillMount() {
     this.propsChangeHandler()
   }
 
+  /**
+   * Invokes propsChangeHandler with new props
+   * @param props
+   */
   componentWillReceiveProps(props) {
     this.propsChangeHandler(props)
   }
 
+  /**
+   * Sets local state to props
+   * @param _props
+   */
   propsChangeHandler(_props){
     const props = _props || this.props;
     this.setState({
@@ -44,6 +67,10 @@ class Efficiency extends React.Component {
     });
   }
 
+  /**
+   * Handles click event for report button. Dynamically loads and renders the efficiency report component(code splitting feature)
+   * @param e
+   */
   reportButtonClickHandler(e){
     if(!this.state.reportEnabled){
       this.setState({
@@ -57,6 +84,10 @@ class Efficiency extends React.Component {
     }
   }
 
+  /**
+   * Responsible for rendering component
+   * @returns {XML}
+   */
   render(){
     return (
       <div>

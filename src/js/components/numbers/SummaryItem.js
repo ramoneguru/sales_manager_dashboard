@@ -1,5 +1,4 @@
 /**
- *  Represents Stateless Summary Item of an Individual Sales Rep. Details
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -11,7 +10,14 @@ import React from 'react';
 import Constants from '../../constants/constants';
 import PropTypes from 'prop-types';
 
-const SummaryItem = (props) => {
+/**
+ * Represents a summary of an indivdual sales rep number of activities
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
+function SummaryItem( props ) {
   let rate = 0;
   let src = `${Constants.PROTOCOL}//${Constants.HOST}/images/${props.avatar}`
 

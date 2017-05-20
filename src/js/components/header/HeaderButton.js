@@ -1,5 +1,4 @@
 /**
- *  Represents Stateless HeaderButton (Hamburger Icon)
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -11,7 +10,14 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-const HeaderButton = (props) => {
+/**
+ * Represents header button (hamburger)
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
+function HeaderButton(props){
   var styles = classNames('button', props.active === 1 ? 'active' : '');
 
   return (

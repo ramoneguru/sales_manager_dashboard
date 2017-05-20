@@ -2,7 +2,14 @@ import React from 'react';
 import Header from './header/Header';
 import PropTypes from 'prop-types';
 
-let Template = ( props ) => {
+/**
+ * Represents Template for application page layout
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
+function Template(props){
   return (
     <div className="container">
       <Header></Header>

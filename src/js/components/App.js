@@ -20,6 +20,11 @@ let store = null;
 let persistedState = null;
 let expiration = new Date().getTime() - (1 * 24 * 60 * 60 * 1000);
 
+/**
+ * Creates redux store. If no persisted state argument default state from Reducers will be used
+ * @param persistedState
+ * @private
+ */
 let _createStore = (persistedState) => {
   if(hasStorage() && persistedState) {
     store = createStore(
@@ -36,6 +41,9 @@ let _createStore = (persistedState) => {
   }
 }
 
+/**
+ * Responsible for fetching data and persisting the payload if local storage is available and the application is not being from localhost:8080
+ */
 let refreshStore = () => {
   Promise.all([
     store.dispatch(fetchSalesReps(0)),
@@ -51,7 +59,9 @@ let refreshStore = () => {
   });
 }
 
-
+/**
+ * Responsible for determining if persisted data exists and retrieving it from local storage
+ */
 if(hasStorage() && !isDev){
   let pActivityNumbers = localStorage.getItem('ActivityNumbers')
   let pActivityEfficiency = localStorage.getItem('ActivityEfficiency')
@@ -66,7 +76,11 @@ if(hasStorage() && !isDev){
   }
 }
 
-//@TODO consider refactoring to allow each payload to persist for unique durations
+
+/**
+ * Responsible for invoking _createStore. If persisted data is not expired it will be passed as args
+ * @TODO consider refactoring to allow each payload to persist for unique durations
+ */
 if(persistedState){
   if(persistedState.ActivityNumbers.lastUpdated > expiration){
     _createStore(persistedState)
@@ -82,26 +96,26 @@ else{
 }
 
 
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render(){
-    return (
-      <Provider store={store}>
-        <Router history={history}>
-          <Template>
-            <Switch>
-              <Route exact path="/" component={ Numbers }/>
-              <Route exact path="/efficiency" component={ Efficiency }/>
-            </Switch>
-          </Template>
-        </Router>
-      </Provider>
-    )
-  }
+/**
+ * Represents sales manager dashboard application
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
+function App(props){
+  return (
+    <Provider store={store}>
+      <Router history={history}>
+        <Template>
+          <Switch>
+            <Route exact path="/" component={ Numbers }/>
+            <Route exact path="/efficiency" component={ Efficiency }/>
+          </Switch>
+        </Template>
+      </Router>
+    </Provider>
+  )
 }
 
 export default App;

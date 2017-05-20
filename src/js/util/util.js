@@ -1,5 +1,15 @@
 import Constants from '../constants/constants';
+/**
+ * Provides various helper/utility methods
+ * @exports {debounce, hasStorage}
+ */
 
+/**
+ * Helper function for preventing multiple function invocations
+ * @param func
+ * @param wait
+ * @returns {Function}
+ */
 const debounce = (func, wait) => {
   var timeout;
   return function() {
@@ -15,6 +25,10 @@ const debounce = (func, wait) => {
   };
 }
 
+/**
+ * Helper method for determining if local storage is available
+ * @returns {boolean}
+ */
 const hasStorage = () => {
   var test = 'test';
   try {

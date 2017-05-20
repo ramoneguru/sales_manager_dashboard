@@ -1,5 +1,4 @@
 /**
- *  Class representing a Line Chart.
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -13,26 +12,44 @@ import Chartist from 'chartist-webpack';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+/**
+ * Class representing a Line Chart.
+ */
 class LineChart extends React.Component {
 
+  /**
+   *
+   * @constructor
+   * @param props
+   */
   constructor(props) {
     super(props);
   }
 
+  /**
+  * Sets local state based on props
+  */
   componentWillMount(){
     this.setState(this.props);
   }
 
+  /**
+   * Sets local state based on new props and invokes renderChart as callback
+   * @param props
+   */
   componentWillReceiveProps(props) {
-    this.renderChart(props);
+    this.setState(props, this.renderChart);
   }
 
+  /**
+   * Invokes renderChart
+   */
   componentDidMount(){
     this.renderChart();
   }
 
   /**
-   * Responsible for formatting data for Chartist LineChart consumption
+   * Invokes updateChart with formatted data
    * @param _props
    * @desc O(n^2) assumes max sales team size of 6 reps and 12 month historic data
    */
@@ -75,6 +92,9 @@ class LineChart extends React.Component {
     this.setState(aux, this.updateChart)
   }
 
+  /**
+   * Creates and renders new instance of chart
+   */
   updateChart(){
     new Chartist.Line(this.chartContainer, this.state.chartData, {
       axisX: {
@@ -87,6 +107,10 @@ class LineChart extends React.Component {
     });
   }
 
+  /**
+   * Responsible for loading indicator and chart keys
+   * @returns {XML}
+   */
   render(){
     
     let indicatorStyles = classNames('loading-indicator animated-background', this.state.activityEfficiency.isFetching ? '' : 'end');

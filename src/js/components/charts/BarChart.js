@@ -1,5 +1,4 @@
 /**
- *  Class representing a Bar Chart.
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -12,10 +11,14 @@ import Chartist from 'chartist-webpack';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+/**
+ *  Class representing a Bar Chart.
+ */
 class BarChart extends React.Component {
 
   /**
-   * Binds updateChart method to context of BarChart instance
+   * Binds updateChart method to context of instance
+   * @constructor
    * @param props
    */
   constructor(props) {
@@ -24,22 +27,29 @@ class BarChart extends React.Component {
   }
 
   /**
-   * Sets 
+   * Sets local state based on props
    */
   componentWillMount(){
     this.setState(this.props);
   }
 
+  /**
+   * Sets local state based on new props and invokes renderChart as callback
+   * @param props
+   */
   componentWillReceiveProps(props) {
-    this.renderChart(props);
+    this.setState(props, this.renderChart);
   }
 
+  /**
+   * Invokes renderChart
+   */
   componentDidMount(){
     this.renderChart();
   }
 
   /**
-   * Responsible for formatting numbers data for Chartist BarChart consumption
+   * Invokes updateChart with formatted data
    * @param _props
    * @desc O(n^2) assumes max sales team size of 6 reps and 12 month historic data
    */
@@ -73,6 +83,9 @@ class BarChart extends React.Component {
     this.setState(aux, this.updateChart)
   }
 
+  /**
+   * Creates and renders new instance of chart
+   */
   updateChart(){
  
     var upperBound = 500;
@@ -101,6 +114,10 @@ class BarChart extends React.Component {
     });
   }
 
+  /**
+   * Responsible for loading indicator and chart keys and rendering component
+   * @returns {XML}
+   */
   render(){
 
     let indicatorStyles = classNames('load-indicator animated-background', this.state.activityNumbers.isFetching ? '' : 'end');

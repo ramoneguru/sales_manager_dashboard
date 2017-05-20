@@ -1,10 +1,9 @@
 /**
- *  Class representing a App Header.
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
- * @desc  Maintains Global Nav Menu State /(HOC) WithRouter
  * @exports Header Class
+ * @desc  Maintains Global Nav Menu State /(HOC) WithRouter
  */
 
 import React from 'react';
@@ -15,8 +14,17 @@ import classNames from 'classnames';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 
+/**
+ * Represents application header
+ */
 class Header extends React.Component {
 
+  /**
+   * Binds menuClickHandler method to context of instance
+   * Binds updateMenu method to context of instance
+   * Invokes updateMenu on url history change event
+   * @param props
+   */
   constructor(props) {
     super(props);
     this.menuClickHandler = this.menuClickHandler.bind(this)
@@ -27,14 +35,24 @@ class Header extends React.Component {
     })
   }
 
+  /**
+   * Sets local state to closed menu by default
+   */
   componentWillMount(){
     this.setState({menu: 0})
   }
 
+  /**
+   * Handles menu click event by invoking updateMenu
+   * @param e
+   */
   menuClickHandler( e ){
     this.updateMenu()
   }
 
+  /**
+   * Sets local state based on prev menu state (toggles menu: 0:close, 1:open)
+   */
   updateMenu(){
     this.setState(function(prevState){
       let active = ( prevState.menu === 0 ) ? 1 : 0;
@@ -42,6 +60,10 @@ class Header extends React.Component {
     } )
   }
 
+  /**
+   * Responsible for render component and determining overlay state
+   * @returns {XML}
+   */
   render( ){
     let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '')
     return (

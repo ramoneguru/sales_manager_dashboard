@@ -1,5 +1,4 @@
 /**
- *  Represents Report Item
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -10,8 +9,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EfficiencyReportItem = (props) => {
-  
+/**
+ * Represents a line item within the efficiency report
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
+function EfficiencyReportItem(props){
   return (
     <div className="efficiency-report__item">
       <span className="name">{props.name}</span>

@@ -1,5 +1,4 @@
 /**
- *  Class representing a Sales Teams Activity Numbers.
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -12,10 +11,16 @@ import PropTypes from 'prop-types';
 import NumbersSummary from './NumbersSummary';
 import BarChart from '../charts/BarChart';
 
+/**
+ *
+ * @param state
+ * @param ownProps
+ * @returns {{activityNumbers: *, salesReps: *, chartView: string}}
+ */
 const mapStateToProps = (state, ownProps) => {
   return {
-    ActivityNumbers : state.ActivityNumbers,
-    AalesReps       : state.SalesReps,
+    activityNumbers : state.ActivityNumbers,
+    salesReps       : state.SalesReps,
     chartView       : '30D'
   }
 }
@@ -25,19 +30,34 @@ const mapStateToProps = (state, ownProps) => {
  */
 class Numbers extends React.Component {
 
+  /**
+   * Binds chartViewClickHandler to context of instance
+   * @param props
+   */
   constructor(props) {
     super(props);
     this.chartViewClickHandler = this.chartViewClickHandler.bind(this)
   }
 
+  /**
+   * Invokes propsChangeHandler
+   */
   componentWillMount() {
     this.propsChangeHandler()
   }
 
+  /**
+   * Invokes propsChangeHandler with new props
+   * @param props
+   */
   componentWillReceiveProps(props) {
     this.propsChangeHandler(props)
   }
 
+  /**
+   * Handles chart view menu click. Invokes propsChangeHandler with helper object representing new state
+   * @param e
+   */
   chartViewClickHandler(e){
     var chartView = e.target.getAttribute('data-chartView');
     if(chartView){
@@ -47,6 +67,10 @@ class Numbers extends React.Component {
     }
   }
 
+  /**
+   * Sets local state based on props or based on optional _props arg represeting new state
+   * @param _props
+   */
   propsChangeHandler(_props){
     const props = _props || this.props;
     this.setState({
@@ -56,6 +80,10 @@ class Numbers extends React.Component {
     });
   }
 
+  /**
+   * Responsible for rendering component
+   * @returns {XML}
+   */
   render(){
     return (
       <div>

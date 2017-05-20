@@ -7,6 +7,13 @@
 
 import Constants from '../constants/constants';
 
+/**
+ * Responsible for determining state in redux store for sales reps
+ * @param state
+ * @param action
+ * @returns {*}
+ * @constructor
+ */
 const SalesReps = (state = {
   didInvalidate : false,
   isFetching    : true,

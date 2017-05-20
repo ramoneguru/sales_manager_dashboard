@@ -1,6 +1,4 @@
 /**
- *  Represents Stateless Sales Team Summary List
- *  Sales Rep. Name, Profile Image, Connect Rate %
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
@@ -12,7 +10,14 @@ import React from 'react';
 import SummaryItem from './SummaryItem';
 import PropTypes from 'prop-types';
 
-const NumbersSummary = (props) => {
+/**
+ * Reresents summary for sales teams number of activities
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
+function NumbersSummary( props ) {
   let summaryItems = Object.keys(props.salesReps).map( key => {
     let data = props.activityNumbers.filter(function(entity){
       return parseInt(entity.repId) === parseInt(key);

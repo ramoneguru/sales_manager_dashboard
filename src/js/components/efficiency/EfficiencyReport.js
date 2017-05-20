@@ -1,20 +1,25 @@
 /**
- *  Represents Sales Team Efficiency Report
- *
- *
+ * 
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
  * @param props
  * @exports EfficiencyAnalyis Constructor
- * @desc Efficiency Report is intented to demonstrate code splitting. In actual application dynamic module would be cached and report state maintained
+ * @desc Demonstrates code splitting. In actual application dynamic module would be cached and report state maintained
  */
 
 import React from 'react';
 import EfficiencyReportItem from './EfficiencyReportItem'
 import PropTypes from 'prop-types';
 
-const EfficiencyReport = (props) => {
+/**
+ * Represents a sales team's activity efficiency report
+ * @param props
+ * @returns {XML}
+ * @constructor
+ * @desc prefer normal functions (not arrow functions) for stateless/refless components over over classes
+ */
 
+function EfficiencyReport(props){
   let report = Object.keys(props.salesReps.entities).map( key => {
 
     return <EfficiencyReportItem
