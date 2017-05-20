@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const EfficiencyReportItem = (props) => {
   
@@ -28,14 +29,14 @@ const EfficiencyReportItem = (props) => {
 
 EfficiencyReportItem.propTypes = {
   "name"             : PropTypes.string.isRequired,
-  "dials"            : PropTypes.string.isRequired,
-  "connects"         : PropTypes.string.isRequired,
-  "opps"             : PropTypes.string.isRequired,
-  "deals"            : PropTypes.string.isRequired,
-  "dialConnectRatio" : PropTypes.string.isRequired,
-  "dialOppRatio"     : PropTypes.string.isRequired,
-  "oppDealRatio"     : PropTypes.string.isRequired,
-  "dialDealRatio"    : PropTypes.string.isRequired
+  "dials"            : PropTypes.number.isRequired,
+  "connects"         : PropTypes.number.isRequired,
+  "opps"             : PropTypes.number.isRequired,
+  "deals"            : PropTypes.number.isRequired,
+  "dialConnectRatio" : PropTypes.array.isRequired,
+  "dialOppRatio"     : PropTypes.array.isRequired,
+  "oppDealRatio"     : PropTypes.array.isRequired,
+  "dialDealRatio"    : PropTypes.array.isRequired
 };
 
 

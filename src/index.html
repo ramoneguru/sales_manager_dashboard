@@ -12,14 +12,21 @@
 </head>
 <body>
     <div id="main"></div>
-    <script>
-        if ('serviceWorker' in navigator) {
-//            window.addEventListener('load', function() {
-//                navigator.serviceWorker.register('/service-worker.js');
-//            });
-        }
-    </script>
+
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <noscript>Please enable JavaScript for your browser.</noscript>
+    <script>
+        if ('serviceWorker' in navigator) {
+
+            window.addEventListener('load', function() {
+                if(window.location.origin !== "http://localhost:8080"){
+                    navigator.serviceWorker.register('/service-worker.js',{
+                        useCache: true
+                    });
+                }
+
+            });
+        }
+    </script>
 </body>
 </html>
