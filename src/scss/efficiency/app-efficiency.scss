@@ -44,6 +44,16 @@
       font-size:1em;
     }
 
+    .dials,
+    .connects,
+    .opps,
+    .deals{
+      display:none;
+    }
+
+    /*
+     * Non Ratio Columns should be visible in large viewports
+     */
     @include susy-breakpoint($bp-medium) {
       strong{
         font-size:1.5em;
@@ -51,6 +61,13 @@
 
       span{
         font-size:1.25em;
+      }
+
+      .dials,
+      .connects,
+      .opps,
+      .deals{
+        display:inline-block;
       }
     }
 

@@ -35,15 +35,15 @@ const EfficiencyReport = (props) => {
       <div>
         <h3>Efficiency Report</h3>
         <div className="efficiency-report__header">
-          <strong>Sales Rep.</strong>
-          <strong>Dials</strong>
-          <strong>Connects</strong>
-          <strong>Opps</strong>
-          <strong>Deals</strong>
-          <strong>Dial : Connect</strong>
-          <strong>Dial : Opp</strong>
-          <strong>Opp : Deal</strong>
-          <strong>Dial : Deal</strong>
+          <strong className="name">Sales Rep.</strong>
+          <strong className="dials">Dials</strong>
+          <strong className="connects">Connects</strong>
+          <strong className="opps">Opps</strong>
+          <strong className="deals">Deals</strong>
+          <strong className="dialConnectRatio">Dial : Connect</strong>
+          <strong className="dialOppRatio">Dial : Opp</strong>
+          <strong className="oppDealRatio">Opp : Deal</strong>
+          <strong className="dialDealRatio">Dial : Deal</strong>
         </div>
         {report}
       </div>

@@ -14,15 +14,15 @@ const EfficiencyReportItem = (props) => {
   
   return (
     <div className="efficiency-report__item">
-      <span>{props.name}</span>
-      <span>{props.dials}</span>
-      <span>{props.connects}</span>
-      <span>{props.opps}</span>
-      <span>{props.deals}</span>
-      <span>{props.dialConnectRatio[0]}:{props.dialConnectRatio[1]}</span>
-      <span>{props.dialOppRatio[0]}:{props.dialOppRatio[1]}</span>
-      <span>{props.oppDealRatio[0]}:{props.oppDealRatio[1]}</span>
-      <span>{props.dialDealRatio[0]}:{props.dialDealRatio[1]}</span>
+      <span className="name">{props.name}</span>
+      <span className="dials">{props.dials}</span>
+      <span className="connects">{props.connects}</span>
+      <span className="opps">{props.opps}</span>
+      <span className="deals">{props.deals}</span>
+      <span className="dialConnectRatio">{props.dialConnectRatio[0]}:{props.dialConnectRatio[1]}</span>
+      <span className="dialOppRatio">{props.dialOppRatio[0]}:{props.dialOppRatio[1]}</span>
+      <span className="oppDealRatio">{props.oppDealRatio[0]}:{props.oppDealRatio[1]}</span>
+      <span className="dialDealRatio">{props.dialDealRatio[0]}:{props.dialDealRatio[1]}</span>
     </div>
   )
 }
