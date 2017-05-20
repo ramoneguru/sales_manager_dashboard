@@ -13,11 +13,6 @@ module.exports = {
     path:resolve(__dirname, 'dist'),
     filename: 'bundle.[hash].js'
   },
-  // resolve: {
-  //   modules: [
-  //     __dirname
-  //   ]
-  // },
   module: {
     rules: [
       {

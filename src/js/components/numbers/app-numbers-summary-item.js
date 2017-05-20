@@ -29,4 +29,10 @@ const SummaryItem = (props) => {
   )
 }
 
+SummaryItem.propTypes = {
+  "name"   : PropTypes.string.isRequired,
+  "avatar" : PropTypes.string.isRequired,
+  "data"   : PropTypes.array.isRequired
+};
+
 export default SummaryItem;

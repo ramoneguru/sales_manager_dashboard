@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './header/app-header';
 
-export default ( props ) => {
+let Template = ( props ) => {
   return (
-    <div className='container'>
+    <div className="container">
       <Header></Header>
       <section>
         { props.children }
@@ -14,3 +14,9 @@ export default ( props ) => {
     </div>
   )
 }
+
+Template.propTypes = {
+  "children": PropTypes.object.isRequired
+};
+
+exports.default = Template;

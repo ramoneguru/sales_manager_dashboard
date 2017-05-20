@@ -10,8 +10,8 @@ import { fetchSalesReps, fetchActivityNumbers, fetchActivityEfficiency} from '..
 import rootReducer from '../reducers/app-reducers';
 import { hasStorage } from '../util/app-util';
 
-//import { createLogger } from 'redux-logger'
-//const loggerMiddleware = createLogger();
+//Import { createLogger } from 'redux-logger'
+//Const loggerMiddleware = createLogger();
 
 let store = null;
 let persistedState = null;
@@ -25,7 +25,8 @@ let _createStore = (persistedState) => {
       persistedState,
       applyMiddleware(thunkMiddleware)
     );
-  }else{
+  }
+  else{
     store = createStore(
       rootReducer,
       applyMiddleware(thunkMiddleware)
@@ -56,9 +57,9 @@ if(hasStorage()){
 
   if(pActivityNumbers && pActivityEfficiency && pSalesReps){
     persistedState = {
-      ActivityNumbers: JSON.parse(pActivityNumbers),
-      ActivityEfficiency: JSON.parse(pActivityEfficiency),
-      SalesReps: JSON.parse(pSalesReps)
+      ActivityNumbers    : JSON.parse(pActivityNumbers),
+      ActivityEfficiency : JSON.parse(pActivityEfficiency),
+      SalesReps          : JSON.parse(pSalesReps)
     };
   }
 }
@@ -67,16 +68,18 @@ if(hasStorage()){
 if(persistedState){
   if(persistedState.ActivityNumbers.lastUpdated > expiration){
     _createStore(persistedState)
-  }else{
+  }
+  else{
     _createStore()
     refreshStore()
   }
-}else{
+}
+else{
   _createStore()
   refreshStore()
 }
 
-export default () => {
+let App = () => {
   return (
     <Provider store={store}>
       <Router history={history}>
@@ -90,3 +93,5 @@ export default () => {
     </Provider>
   )
 }
+
+export default App;

@@ -37,13 +37,13 @@ const NumbersSummary = (props) => {
 }
 
 NumbersSummary.propTypes =  {
-  'activityNumbers': PropTypes.array.isRequired,
-  'salesReps': PropTypes.object.isRequired
+  'activityNumbers' : PropTypes.array.isRequired,
+  'salesReps'       : PropTypes.object.isRequired
 }
 
 NumbersSummary.defaultProps = {
-  'activityNumbers': [],
-  'salesReps':{}
+  'activityNumbers' : [],
+  'salesReps'       : {}
 };
 
 export default NumbersSummary;

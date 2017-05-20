@@ -22,4 +22,9 @@ const Button = (props) => {
   )
 }
 
+Button.propTypes = {
+  "active"  : PropTypes.number.isRequired,
+  "handler" : PropTypes.function.isRequired
+};
+
 export default Button;

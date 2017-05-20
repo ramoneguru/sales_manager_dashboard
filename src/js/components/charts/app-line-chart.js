@@ -42,28 +42,28 @@ class LineChart extends React.Component {
     if (props.activityEfficiency.isFetching || props.salesReps.isFetching) return;
 
     //...format chart data
-    let aux = Object.assign({}, props,{
-        'chartData':{ series: []}
+    let aux = Object.assign({}, props, {
+        'chartData': { series: []}
       }),
       _effEntities = aux.activityEfficiency.entities;
 
     for(let i in _effEntities){
 
-      var item = Object.create(Object.prototype,{
+      var item = Object.create(Object.prototype, {
         name: {
-          value: i,
-          writable: false
+          value    : i,
+          writable : false
         },
-        data:{
-          value: [],
-          writable: true
+        data: {
+          value    : [],
+          writable : true
         }
       });
 
       var data = _effEntities[i].map((entry) => {
         return{
-          x: new Date(entry.date),
-          y: entry.ratio
+          x : new Date(entry.date),
+          y : entry.ratio
         }
       });
 
@@ -78,9 +78,9 @@ class LineChart extends React.Component {
   updateChart(){
     new Chartist.Line(this.chartContainer, this.state.chartData, {
       axisX: {
-        type: Chartist.FixedScaleAxis,
-        divisor: 7,
-        labelInterpolationFnc: function(value) {
+        type                  : Chartist.FixedScaleAxis,
+        divisor               : 7,
+        labelInterpolationFnc : function(value) {
           return moment(value).format('MMM D');
         }
       }
@@ -114,14 +114,16 @@ class LineChart extends React.Component {
   }
 }
 
-LineChart.propTypes =  {
-  'activityEfficiency': PropTypes.object.isRequired,
-  'salesReps': PropTypes.object.isRequired
-}
+LineChart.propTypes = {
+  "activityEfficiency" : PropTypes.default.object.isRequired,
+  "salesReps"          : PropTypes.default.object.isRequired,
+  "indicators"         : PropTypes.default.array.isRequired,
+  "chartKeys"          : PropTypes.default.array.isRequired
+};
 
 LineChart.defaultProps = {
-  indicators: [1, 2, 3, 4],
-  chartKeys: ['Call : Connect', 'Connect : Meeting Schd.', 'Meeting Schd. : Opp Sourced']
+  indicators : [1, 2, 3, 4],
+  chartKeys  : ['Call : Connect', 'Connect : Meeting Schd.', 'Meeting Schd. : Opp Sourced']
 }
 
 export default LineChart;

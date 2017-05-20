@@ -14,9 +14,9 @@ import PropTypes from 'prop-types';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    activityEfficiency: state.ActivityEfficiency,
-    salesReps:state.SalesReps,
-    reportEnabled: state.reportEnabled
+    activityEfficiency : state.ActivityEfficiency,
+    salesReps          : state.SalesReps,
+    reportEnabled      : state.reportEnabled
   }
 }
 
@@ -38,9 +38,9 @@ class Efficiency extends React.Component {
   propsChangeHandler(_props){
     const props = _props || this.props;
     this.setState({
-      activityEfficiency:props.activityEfficiency,
-      salesReps:props.salesReps,
-      reportEnabled: props.reportEnabled
+      activityEfficiency : props.activityEfficiency,
+      salesReps          : props.salesReps,
+      reportEnabled      : props.reportEnabled
     });
   }
 
@@ -48,7 +48,7 @@ class Efficiency extends React.Component {
     if(!this.state.reportEnabled){
       this.setState({
         reportEnabled: true
-      },()=>{
+      }, ()=>{
         import('./app-efficiency-report').then(EfficiencyReport => {
           this.EfficiencyReport = EfficiencyReport
           this.forceUpdate()

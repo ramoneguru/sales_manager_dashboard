@@ -4,19 +4,28 @@
     "react"
   ],
   "rules": {
-    "no-unused-vars": 0,
-    "max-len": [0, 70, 2, {"ignoreComments": true}],
-    "prop-types": [0],
-
-    "no-console":0,
-    "func-names": 0,
-    "no-var": 0,
-    "func-style": 0,
-    "comma-dangle": 0,
-    "valid-jsdoc": 0,
-    "vars-on-top": 0,
-    "complexity": [2, 8],
-    "prefer-template": 0
+    "strict": 0,
+    "array-bracket-spacing":["error", "never"],
+    "block-spacing":["warn", "never"],
+    "brace-style":["warn","stroustrup", { "allowSingleLine": true }],
+    "capitalized-comments": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "comma-spacing":["error", { "before": false, "after": true }],
+    "comma-style": ["error", "last"],
+    "func-call-spacing": ["error", "never"],
+    "indent": ["warn", 2],
+    "jsx-quotes": ["error", "prefer-double"],
+    "key-spacing":["warn",{
+      "multiLine": {
+        "beforeColon": false,
+        "afterColon": true
+      },
+      "align": {
+        "beforeColon": true,
+        "afterColon": true,
+        "on": "colon"
+      }
+    }]
   },
   "globals": {
     "jasmine": false,

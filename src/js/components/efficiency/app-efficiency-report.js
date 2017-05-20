@@ -56,7 +56,7 @@ EfficiencyReport.propTypes =  {
 }
 
 EfficiencyReport.defaultProps = {
-  'salesReps':{}
+  'salesReps': {}
 };
 
 

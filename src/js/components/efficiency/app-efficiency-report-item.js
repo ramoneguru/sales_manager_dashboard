@@ -26,4 +26,17 @@ const EfficiencyReportItem = (props) => {
   )
 }
 
+EfficiencyReportItem.propTypes = {
+  "name"             : PropTypes.string.isRequired,
+  "dials"            : PropTypes.string.isRequired,
+  "connects"         : PropTypes.string.isRequired,
+  "opps"             : PropTypes.string.isRequired,
+  "deals"            : PropTypes.string.isRequired,
+  "dialConnectRatio" : PropTypes.string.isRequired,
+  "dialOppRatio"     : PropTypes.string.isRequired,
+  "oppDealRatio"     : PropTypes.string.isRequired,
+  "dialDealRatio"    : PropTypes.string.isRequired
+};
+
+
 export default EfficiencyReportItem;

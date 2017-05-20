@@ -24,10 +24,10 @@ const requestActivityNumbers = (repId) => {
 
 const receiveActivityNumbers = (repId, json) => {
   return {
-    type: AppConstants.RECEIVE_ACTIVTY_NUMBERS,
+    type       : AppConstants.RECEIVE_ACTIVTY_NUMBERS,
     repId,
-    entities: json.data.entities,
-    receivedAt: Date.now()
+    entities   : json.data.entities,
+    receivedAt : Date.now()
   }
 }
 
@@ -54,10 +54,10 @@ const requestSalesReps = (repId) => {
 
 const receiveSalesReps = (repId, json) => {
   return {
-    type: AppConstants.RECEIVE_SALES_REPS,
+    type       : AppConstants.RECEIVE_SALES_REPS,
     repId,
-    entities: json.data.entities,
-    receivedAt: Date.now()
+    entities   : json.data.entities,
+    receivedAt : Date.now()
   }
 }
 
@@ -91,10 +91,10 @@ const requestActivityEfficiency = (repId) => {
 
 const receiveActivityEfficiency = (repId, json) => {
   return {
-    type: AppConstants.RECEIVE_ACTIVTY_EFFICIENCY,
+    type       : AppConstants.RECEIVE_ACTIVTY_EFFICIENCY,
     repId,
-    entities: json.data.entities,
-    receivedAt: Date.now()
+    entities   : json.data.entities,
+    receivedAt : Date.now()
   }
 }
 

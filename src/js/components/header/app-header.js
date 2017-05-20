@@ -45,7 +45,7 @@ class Header extends React.Component {
     let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '')
     
     return (
-      <header className='header'>
+      <header className="header">
         <Button active={ this.state.menu } handler={ this.menuClickHandler }></Button>
         <div className={ overlayStyles }>
           <nav className="app-nav">
@@ -58,5 +58,8 @@ class Header extends React.Component {
   }
 }
 
-//export default Header;
+Header.propTypes = {
+  "history": PropTypes.object.isRequired
+};
+
 export default withRouter(Header);

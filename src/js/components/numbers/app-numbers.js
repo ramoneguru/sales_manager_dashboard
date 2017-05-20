@@ -14,9 +14,9 @@ import BarChart from '../charts/app-bar-chart';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    activityNumbers: state.ActivityNumbers,
-    salesReps:state.SalesReps,
-    chartView:'30D'
+    activityNumbers : state.ActivityNumbers,
+    salesReps       : state.SalesReps,
+    chartView       : '30D'
   }
 }
 
@@ -35,7 +35,7 @@ class Numbers extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-   this.propsChangeHandler(props)
+    this.propsChangeHandler(props)
   }
 
   chartViewClickHandler(e){
@@ -50,9 +50,9 @@ class Numbers extends React.Component {
   propsChangeHandler(_props){
     const props = _props || this.props;
     this.setState({
-      activityNumbers:props.activityNumbers,
-      salesReps:props.salesReps,
-      chartView:props.chartView
+      activityNumbers : props.activityNumbers,
+      salesReps       : props.salesReps,
+      chartView       : props.chartView
     });
   }
 
@@ -63,9 +63,9 @@ class Numbers extends React.Component {
           <h1 className="page-title">Activity Numbers</h1>
           <div className="chart-menu" >
              <span onClick={this.chartViewClickHandler}>
-              <button type="button" data-chartView='30D' className={this.state.chartView === '30D' ? 'active' : ''}>30D</button>
-              <button type="button" data-chartView='90D' className={this.state.chartView === '90D' ? 'active' : ''}>90D</button>
-              <button type="button" data-chartView='12M' className={this.state.chartView === '12M' ? 'active' : ''}>12M</button>
+              <button type="button" data-chartView="30D" className={this.state.chartView === '30D' ? 'active' : ''}>30D</button>
+              <button type="button" data-chartView="90D" className={this.state.chartView === '90D' ? 'active' : ''}>90D</button>
+              <button type="button" data-chartView="12M" className={this.state.chartView === '12M' ? 'active' : ''}>12M</button>
              </span>
           </div>
         </header>
@@ -86,9 +86,9 @@ class Numbers extends React.Component {
 }
 
 Numbers.propTypes =  {
-  'activityNumbers': PropTypes.object.isRequired,
-  'salesReps': PropTypes.object.isRequired,
-  'chartView': PropTypes.string.isRequired
+  'activityNumbers' : PropTypes.object.isRequired,
+  'salesReps'       : PropTypes.object.isRequired,
+  'chartView'       : PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps)(Numbers);

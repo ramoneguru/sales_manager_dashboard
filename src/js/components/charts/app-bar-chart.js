@@ -41,8 +41,8 @@ class BarChart extends React.Component {
 
     if (props.activityNumbers.isFetching || props.salesReps.isFetching) return;
 
-    let aux = Object.assign({}, props,{
-        'chartData':{ labels: [], series: []}
+    let aux = Object.assign({}, props, {
+        'chartData': { labels: [], series: []}
       }),
       chartView = aux['chartView'],
       series = [],
@@ -75,13 +75,13 @@ class BarChart extends React.Component {
     })
 
     new Chartist.Bar(this.chartContainer, {
-      labels: this.state.chartData.labels,
-      series: this.state.chartData.series
+      labels : this.state.chartData.labels,
+      series : this.state.chartData.series
     }, {
-      stackBars: true,
-      axisY: {
-        high:upperBound,
-        labelInterpolationFnc: function(value) {
+      stackBars : true,
+      axisY     : {
+        high                  : upperBound,
+        labelInterpolationFnc : function(value) {
           return value;
         }
       }
@@ -121,14 +121,16 @@ class BarChart extends React.Component {
   }
 }
 
-BarChart.propTypes =  {
-  'activityNumbers': PropTypes.object.isRequired,
-  'salesReps': PropTypes.object.isRequired
-}
+BarChart.propTypes = {
+  "activityNumbers" : PropTypes.default.object.isRequired,
+  "salesReps"       : PropTypes.default.object.isRequired,
+  "indicators"      : PropTypes.default.array.isRequired,
+  "chartKeys"       : PropTypes.default.array.isRequired
+};
 
 BarChart.defaultProps = {
-  indicators: [1, 2, 3, 4, 5, 6, 7],
-  chartKeys: ['Call', 'Email', 'Deal', 'Stage2']
+  indicators : [1, 2, 3, 4, 5, 6, 7],
+  chartKeys  : ['Call', 'Email', 'Deal', 'Stage2']
 }
 
 export default BarChart;
