@@ -10,8 +10,8 @@ module.exports = {
   context: resolve(__dirname, 'src'),
   entry: [ 'babel-polyfill', './js/main.js', './scss/main.scss'],
   output: {
+    filename: 'bundle.js',
     path:resolve(__dirname, 'dist'),
-    filename: 'bundle.[hash].js'
   },
   module: {
     rules: [
@@ -66,20 +66,20 @@ module.exports = {
       template: './index.html',
       filename: './index.html',
       inject: true,
-      cache: false,
+      cache: isDev ?  false : true,
       minify:{
-        removeComments:false,
-        collapseWhitespace:false,
+        removeComments: isDev ? false : true,
+        collapseWhitespace:isDev ? false : true
       }
     }),
     new ExtractTextPlugin({
-      filename: 'bundle.[hash].css',
+      filename: 'bundle.css',
       allChunks: true
     }),
     new ManifestPlugin({
-      "writeToFileEmit":false,
+      "writeToFileEmit": isDev ?  true : false,
       "short_name":"Sales Activity App",
-      "name": "HackerWeb",
+      "name": "Sales Activity App",
       "start_url": ".",
       "display": "standalone",
       "background_color": "#fff",
@@ -87,6 +87,3 @@ module.exports = {
     })
   ]
 }
-
-//mocha --compilers js:babel-core/register --require babel-polyfill
-//,new BundleAnalyzerPlugin({analyzerMode: 'static'})

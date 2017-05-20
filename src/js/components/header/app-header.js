@@ -3,7 +3,7 @@
  *
  * @author Drew Robinson (hello@drewrobinson.com)
  * @version 0.0.1
- * @desc  Maintains Global Nav Menu State / (HOC) WithRouter
+ * @desc  Maintains Global Nav Menu State /(HOC) WithRouter
  * @exports Header Class
  */
 
@@ -12,7 +12,8 @@ import { Link, Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Button from  './app-header-button';
 import classNames from 'classnames';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 
 class Header extends React.Component {
 
@@ -43,7 +44,6 @@ class Header extends React.Component {
 
   render( ){
     let overlayStyles = classNames('overlay', this.state.menu === 1 ? 'active' : '')
-    
     return (
       <header className="header">
         <Button active={ this.state.menu } handler={ this.menuClickHandler }></Button>

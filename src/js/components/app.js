@@ -17,7 +17,6 @@ let store = null;
 let persistedState = null;
 let expiration = new Date().getTime() - (1 * 24 * 60 * 60 * 1000);
 
-
 let _createStore = (persistedState) => {
   if(hasStorage() && persistedState) {
     store = createStore(
@@ -79,19 +78,27 @@ else{
   refreshStore()
 }
 
-let App = () => {
-  return (
-    <Provider store={store}>
-      <Router history={history}>
-        <Template>
-          <Switch>
-            <Route exact path="/" component={ Numbers }/>
-            <Route exact path="/efficiency" component={ Efficiency }/>
-          </Switch>
-        </Template>
-      </Router>
-    </Provider>
-  )
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render(){
+    return (
+      <Provider store={store}>
+        <Router history={history}>
+          <Template>
+            <Switch>
+              <Route exact path="/" component={ Numbers }/>
+              <Route exact path="/efficiency" component={ Efficiency }/>
+            </Switch>
+          </Template>
+        </Router>
+      </Provider>
+    )
+  }
 }
 
 export default App;

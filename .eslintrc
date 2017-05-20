@@ -36,7 +36,7 @@
     "module":false,
     "require":false,
     "document":false,
-    "console":false,
+    "console":true,
     "exports":false
   },
   "extends": ["plugin:react/recommended"]

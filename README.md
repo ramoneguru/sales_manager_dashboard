@@ -2,6 +2,14 @@ Author: Drew Robinson (hello@drewrobinson.com)
 
 Sales Manager Dashboard App
 
+Reqs:
+- Node (v6.10.2)
+- NPM (4.50)
+
+Install:
+- npm install
+- npm start-dev
+
 Implementation:
  - ReactJS/ES6
  - WebPack

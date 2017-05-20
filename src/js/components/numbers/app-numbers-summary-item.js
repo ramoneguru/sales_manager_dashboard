@@ -9,6 +9,7 @@
 
 import React from 'react';
 import AppConstants from '../../constants/app-constants';
+import PropTypes from 'prop-types';
 
 const SummaryItem = (props) => {
   let rate = 0;

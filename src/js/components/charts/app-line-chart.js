@@ -115,10 +115,10 @@ class LineChart extends React.Component {
 }
 
 LineChart.propTypes = {
-  "activityEfficiency" : PropTypes.default.object.isRequired,
-  "salesReps"          : PropTypes.default.object.isRequired,
-  "indicators"         : PropTypes.default.array.isRequired,
-  "chartKeys"          : PropTypes.default.array.isRequired
+  "activityEfficiency" : PropTypes.object.isRequired,
+  "salesReps"          : PropTypes.object.isRequired,
+  "indicators"         : PropTypes.array.isRequired,
+  "chartKeys"          : PropTypes.array.isRequired
 };
 
 LineChart.defaultProps = {

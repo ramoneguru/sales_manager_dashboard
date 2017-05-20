@@ -9,6 +9,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
   var styles = classNames('button', props.active === 1 ? 'active' : '');
@@ -24,7 +25,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   "active"  : PropTypes.number.isRequired,
-  "handler" : PropTypes.function.isRequired
+  "handler" : PropTypes.func.isRequired
 };
 
 export default Button;

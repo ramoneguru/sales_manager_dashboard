@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header/app-header';
+import PropTypes from 'prop-types';
 
 let Template = ( props ) => {
   return (
@@ -19,4 +20,4 @@ Template.propTypes = {
   "children": PropTypes.object.isRequired
 };
 
-exports.default = Template;
+export default Template;
