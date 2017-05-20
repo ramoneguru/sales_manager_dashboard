@@ -9,6 +9,7 @@ Reqs:
 Install:
 - npm install
 - npm start-dev
+- dev-url: http://localhost:8080/
 
 Implementation:
  - ReactJS/ES6
