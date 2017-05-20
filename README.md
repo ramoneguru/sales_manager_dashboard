@@ -2,7 +2,7 @@ Author: Drew Robinson (hello@drewrobinson.com)
 
 Sales Manager Dashboard App
 
-Reqs:
+Env:
 - Node (v6.10.2)
 - NPM (4.50)
 
