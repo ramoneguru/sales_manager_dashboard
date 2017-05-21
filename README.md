@@ -12,6 +12,12 @@ Install Dev:
 - dev-url: http://localhost:8080/
 - !!Note: App.js [ln:17] isDev {bool} disables data peristance for localhost:8080
 
+
+Run Tests (Jest w/Enzyme):
+- run tests: npm run test
+- run and watch tests: npm run test:watch
+- run and update snapshots: npm run test:update
+
 Production Build:
 - npm run build
 
@@ -36,9 +42,8 @@ Implementation:
     - Manifest exists
  - Design is mobile-friendly
  - @TODO Firebase Integration
- - @TODO Evaluate Jest w/Enzyme vs. Mocha w/Enzyme for unit tests
 
 
-Screencast: https://www.screencast.com/t/j42B7MXxc
+[Prototype Site](https://sales-manager-dashboard.firebaseapp.com/#/)
 
-Prototype URL: https://sales-manager-dashboard.firebaseapp.com/#/
+[Screencast](https://www.screencast.com/t/j42B7MXxc)

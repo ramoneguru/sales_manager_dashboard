@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LineChart component  should render correctly 1`] = `
+<div>
+  <figure
+    className="chart-container chart-container--linechart"
+  >
+    <div
+      className="loading-indicator animated-background end"
+    >
+      <div
+        className="background-masker"
+      />
+      <div
+        className="background-masker"
+      />
+      <div
+        className="background-masker"
+      />
+      <div
+        className="background-masker"
+      />
+    </div>
+  </figure>
+  <ul
+    className="chart-key chart-key--linechart"
+  >
+    <li>
+      <i
+        className="call"
+      />
+       
+      Call : Connect
+    </li>
+    <li>
+      <i
+        className="connect"
+      />
+       
+      Connect : Meeting Schd.
+    </li>
+    <li>
+      <i
+        className="meeting schd."
+      />
+       
+      Meeting Schd. : Opp Sourced
+    </li>
+  </ul>
+</div>
+`;

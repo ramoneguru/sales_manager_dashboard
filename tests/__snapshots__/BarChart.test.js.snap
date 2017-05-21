@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BarChart component  should render correctly 1`] = `
+<div>
+  <figure
+    className="chart-container chart-container--barchart"
+  >
+    <div
+      className="load-indicator animated-background end"
+    >
+      <div
+        className="load-indicator__background-masker"
+      />
+      <div
+        className="load-indicator__background-masker"
+      />
+      <div
+        className="load-indicator__background-masker"
+      />
+      <div
+        className="load-indicator__background-masker"
+      />
+      <div
+        className="load-indicator__background-masker"
+      />
+      <div
+        className="load-indicator__background-masker"
+      />
+      <div
+        className="load-indicator__background-masker"
+      />
+    </div>
+  </figure>
+  <ul
+    className="chart-key chart-key--barchart"
+  >
+    <li>
+      <i
+        className="call"
+      />
+       
+      Call
+    </li>
+    <li>
+      <i
+        className="email"
+      />
+       
+      Email
+    </li>
+    <li>
+      <i
+        className="deal"
+      />
+       
+      Deal
+    </li>
+    <li>
+      <i
+        className="stage2"
+      />
+       
+      Stage2
+    </li>
+  </ul>
+</div>
+`;
