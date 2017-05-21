@@ -3,7 +3,7 @@ Author: Drew Robinson (hello@drewrobinson.com)
 **Sales Manager Dashboard App**
 
 **Env:**
-- Node (v6.10.2)
+- Node (v7.8.0)
 - NPM (4.50)
 
 **Install Dev:**
