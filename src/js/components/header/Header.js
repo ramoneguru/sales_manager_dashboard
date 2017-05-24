@@ -84,4 +84,7 @@ Header.propTypes = {
   "history": PropTypes.object.isRequired
 };
 
+
 export default withRouter(Header);
+
+export { Header as PureHeader };
