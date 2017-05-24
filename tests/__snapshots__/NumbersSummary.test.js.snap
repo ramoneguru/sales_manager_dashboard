@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumbersSummary component  should render correctly 1`] = `
+<div
+  className="rep-summary"
+>
+  <div
+    className="rep-summary__header"
+  >
+    <div>
+      <h3>
+        Sales Rep.
+      </h3>
+    </div>
+    <div>
+      <h3>
+        Connect Rate %
+      </h3>
+    </div>
+  </div>
+  <SummaryItem
+    avatar="85719831.jpeg"
+    data={
+      Array [
+        Object {
+          "12M": Array [
+            21600,
+            18300,
+            13500,
+            1200,
+          ],
+          "30D": Array [
+            1800,
+            1400,
+            800,
+            500,
+          ],
+          "90D": Array [
+            5400,
+            3800,
+            3200,
+            1700,
+          ],
+          "repId": 85719831,
+        },
+      ]
+    }
+    name="Marie Curie"
+  />
+  <SummaryItem
+    avatar="85719831.jpeg"
+    data={
+      Array [
+        Object {
+          "12M": Array [
+            21600,
+            18300,
+            13500,
+            1200,
+          ],
+          "30D": Array [
+            1800,
+            1400,
+            800,
+            500,
+          ],
+          "90D": Array [
+            5400,
+            3800,
+            3200,
+            1700,
+          ],
+          "repId": 85719832,
+        },
+      ]
+    }
+    name="Marie Curie"
+  />
+</div>
+`;

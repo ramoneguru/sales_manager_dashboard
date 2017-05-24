@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryItem component  should render correctly 1`] = `
+<SummaryItem
+  avatar="mock"
+  data={Array []}
+  name="mock"
+>
+  <div
+    className="rep-summary__item"
+  >
+    <figure>
+      <span>
+        <img
+          alt="mock"
+          role="presentation"
+          src="about://undefined/images/mock"
+        />
+      </span>
+      <figcaption>
+        mock
+      </figcaption>
+    </figure>
+    <span>
+      0
+      %
+    </span>
+  </div>
+</SummaryItem>
+`;
