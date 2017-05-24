@@ -24,6 +24,7 @@ class BarChart extends React.Component {
   constructor(props) {
     super(props);
     this.updateChart = this.updateChart.bind(this)
+    this.renderChart = this.renderChart.bind(this)
   }
 
   /**

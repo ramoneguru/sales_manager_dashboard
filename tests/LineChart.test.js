@@ -10,11 +10,23 @@ describe('LineChart component ', function(){
     let activityEfficiency = {};
     let salesReps = {};
     
-    const wrapper = shallow(
-      <LineChart activityEfficiency={activityEfficiency} salesReps={salesReps}></LineChart>
+    const lineChart = shallow(
+      <LineChart activityEfficiency={activityEfficiency} salesReps={salesReps} />
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(lineChart).toMatchSnapshot();
+  });
+
+  it('should invoke renderChart after receiving new props', () => {
+    let activityEfficiency = { isFetching:true }
+    let salesReps = { isFetching:true }
+
+    const lineChart = mount(
+      <LineChart activityEfficiency={ activityEfficiency} salesReps={ salesReps } />
+    );
+    lineChart.instance().renderChart = jest.fn();
+    lineChart.setProps({ activityEfficiency: {}})
+    expect(lineChart.instance().renderChart).toHaveBeenCalled()
   });
 
 });

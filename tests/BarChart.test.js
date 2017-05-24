@@ -10,12 +10,26 @@ describe('BarChart component ', function(){
     let activityNumbers = {};
     let salesReps = {};
     let chartView = "30D";
-    
-    const wrapper = shallow(
-      <BarChart activityNumbers={ activityNumbers} salesReps={ salesReps } chartView={ chartView }></BarChart>
+    const barChart = shallow(
+      <BarChart activityNumbers={ activityNumbers} salesReps={ salesReps } chartView={ chartView } />
     );
-
-    expect(wrapper).toMatchSnapshot();
+    expect(barChart).toMatchSnapshot();
   });
+
+
+  it('should invoke renderChart after receiving new props', () => {
+    let activityNumbers = { isFetching:true }
+    let salesReps = { isFetching:true }
+    let chartView = "30D";
+
+    const barChart = mount(
+      <BarChart activityNumbers={ activityNumbers} salesReps={ salesReps } chartView={ chartView } />
+    );
+    barChart.instance().renderChart = jest.fn();
+    barChart.setProps({ chartView: '90D'})
+    expect(barChart.instance().renderChart).toHaveBeenCalled()
+  });
+  
+ 
 
 });

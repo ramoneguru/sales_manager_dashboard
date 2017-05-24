@@ -11,7 +11,7 @@ describe('Header component ', function(){
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('clicking header menu button should update header menu state', () => {
+  it('should update header menu state when header menu button is clicked ', () => {
     const history = {
       listen:jest.fn()
     }
@@ -20,7 +20,7 @@ describe('Header component ', function(){
     expect(instance.state().menu).toBe(1)
   });
 
-  it('clicking header menu button should apply active class to overlay', () => {
+  it('should apply active class to overlay when header menu button is clicked ', () => {
     const history = {
       listen:jest.fn()
     }
@@ -29,7 +29,7 @@ describe('Header component ', function(){
     expect(instance.find('.overlay').get(0).props.className).toContain('active')
   });
 
-  it('clicking navigation link should invoke history listen fn', () => {
+  it('should invoke history listen fn when navigation link is clicked', () => {
     const history = {
       listen:jest.fn()
     }

@@ -14,8 +14,6 @@ describe('HeaderButton component ', function(){
     );
 
     expect(button).toMatchSnapshot();
-    expect(typeof button.prop('active')).toEqual('number');
-    expect(typeof button.prop('handler')).toEqual('function');
   });
 
 
