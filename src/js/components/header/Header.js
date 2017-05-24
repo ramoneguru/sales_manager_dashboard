@@ -71,8 +71,8 @@ class Header extends React.Component {
         <HeaderButton active={ this.state.menu } handler={ this.menuClickHandler }></HeaderButton>
         <div className={ overlayStyles }>
           <nav className="app-nav">
-            <Link to="/">Activity Numbers</Link>
-            <Link to="/efficiency">Activity Efficiency</Link>
+            <Link to="/" className="app-nav__activity-numbers">Activity Numbers</Link>
+            <Link to="/efficiency" className="app-nav__activity-efficiency">Activity Efficiency</Link>
           </nav>
         </div>
       </header>

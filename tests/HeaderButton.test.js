@@ -9,31 +9,23 @@ describe('HeaderButton component ', function(){
   it('should render correctly', () => {
     const menuClickHandler = jest.fn();
     const active = 0;
-    const wrapper = shallow(
+    const button = mount(
       <HeaderButton active={ active } handler={ menuClickHandler } />
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(button).toMatchSnapshot();
+    expect(typeof button.prop('active')).toEqual('number');
+    expect(typeof button.prop('handler')).toEqual('function');
   });
 
-  it('should have active prop of type number', () => {
+
+  it('should contain active class name when active prop is 1', () => {
     const menuClickHandler = jest.fn();
-    const active = 0;
-    const wrapper = mount(
+    const active = 1;
+    const button = shallow(
       <HeaderButton active={ active } handler={ menuClickHandler } />
     );
-
-    expect(typeof wrapper.prop('active')).toEqual('number');
-  });
-
-  it('should have handler prop of type function', () => {
-    const menuClickHandler = jest.fn();
-    const active = 0;
-    const wrapper = mount(
-      <HeaderButton active={ active } handler={ menuClickHandler } />
-    );
-
-    expect(typeof wrapper.prop('handler')).toEqual('function');
+    expect(button.node.props.className).toContain('active')
   });
 
 
